@@ -1,0 +1,196 @@
+
+
+/*共通ヘッダーヘッドライン*/
+TABLE.cm_table_head_line {
+    BORDER-TOP: #99cc00 7px solid;
+    WIDTH: 100%;
+}
+
+TD.cm_list_result_datatitle_bg {
+    border-collapse:collapse;
+    height: 20px;
+    background-color: #ffe27a;
+    border-style:solid;
+    border-width:2;
+}
+
+
+DIV.cm_search_border{
+    width:100%;
+    overflow-y:auto;
+    overflow-x:auto;
+}
+
+TABLE.cm_result_border{
+    width:100%;
+    overflow-y:auto;
+    overflow-x:auto;
+}
+DIV.cm_result_border{
+    width:100%;
+    overflow-y:auto;
+    overflow-x:auto;
+}
+
+
+/*画面タイトルのテーブル*/
+TD.cm_titlebar_bg {
+    border: 1px solid #CBCFED;
+    background-color: #95CA60;
+    height:30px
+}
+
+/*画面タイトル*/
+TD.cm_titlebar {
+    font-weight: bold;    
+    font-size:17
+    white-space: nowrap;
+    height:20;
+}
+
+/*ナビゲーションメッセージ*/
+TR.cm_messagebar_bg {
+    height:25px;
+    vertical-align:top;
+    border-style: none;
+    overflow:scroll;
+}
+
+/*クリアボタン*/
+INPUT.cm_clear_bg {
+    background-color:#FFFF80;
+    border: 3px outset #FFFF99;
+    height:22px;
+}
+/*テーブル枠線*/
+TABLE.cm_table_border {
+    width:100%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: gray;
+}
+
+/*テーブルタイトル*/
+TD.cm_list_title_bg {
+    font-weight: bold;
+    height: 20px;
+    background-color: #cde6b4;
+}
+
+/*テーブルタイトル*/
+TD.cm_list_title_sort_bg {
+    font-weight: bold;
+    height: 20px;
+    background-color: #cde6b4;
+}
+
+/*項目タイトル*/
+TD.cm_list_datatitle_bg {
+    height: 20px;
+    background-color: #ffe27a;
+}
+
+/*項目データ*/
+TD.cm_list_data_bg {
+    height: 20px;
+    background-color: #FFFFFF;
+}
+TD.cm_list_data_bg_left {
+    height: 20px;
+    text-align: left;
+    padding: 0px;
+    padding-left: 2px;
+    padding-right: 2px;
+    background-color: #FFFFFF;
+}
+
+/*ボタン左*/
+INPUT.cm_button_left_bg {
+    background-image: url(../img/button_left.gif);
+    border: 0px;
+    height:21px;
+    align:right;
+    width:5px;
+}
+
+/*ボタン中*/
+INPUT.cm_button_bg {
+    background-image: url(../img/button_middle.gif);
+    border: 0px;
+    background-repeat: repeat;
+    height:21px;
+}
+
+/*ボタン右*/
+INPUT.cm_button_right_bg {
+    background-image: url(../img/button_right.gif);
+    border: 0px;
+    height:21px;
+    align:left;
+    width:5px;
+}
+
+/*一覧表示テーブル*/
+TABLE.cm_table_result_border {
+    width:100%;
+    border-color:#DFDFDF;
+    vertical-align:top;
+}
+
+/*リンク項目*/
+A.cm_list_link_bg:link {
+    COLOR: #0035D5; 
+}
+A.cm_list_link_bg:visited {
+    COLOR: #0035D5; 
+}
+A.cm_list_link_bg:hover {
+    COLOR: #C600FF;
+} 
+A.cm_list_link_bg:active {
+    COLOR: #FF5555; 
+}
+
+/*リードオンリー*/
+INPUT.cm_readonly_bg {
+    border:none;
+    cursor:default;
+    borderStyle:none;
+    borderWidth:0;
+}
+
+TD.cm_buttonarea_bg {
+    height: 25px;
+}
+
+INPUT.cm_txt_bg {
+    COLOR: #0035D5;
+}
+INPUT.cm_submit_bg {
+    background-image: url(../img/button_middle.gif);
+    border: 0px;
+    background-repeat: repeat;
+    height:21px;
+}
+
+/* テキストエリアのリードオンリー(枠線なし) */
+TEXTAREA.cm_readonly_bg1 {
+    border:none;
+    cursor:default;
+    borderStyle:none;
+    borderWidth:0;
+}
+
+/* KSYU04お知らせ情報で追加*/
+.sy_un_input_data {
+    background-color: #c0c0c0;
+}
+
+/* KSYU09スタックトレース部 */
+DIV.sy_stack_scroll{
+    font-size: 12px;
+    border: 1px solid #CBCFED;
+    width: 100%;
+    height: 1000; 
+    overflow:scroll;
+}
