@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+  <cron>
+    <url>/cron/research</url>
+    <description>fetch some data</description>
+    <schedule>every 1 minute</schedule>
+  </cron>
+</cronentries>

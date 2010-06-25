@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE wml PUBLIC "-//WAPFORUM//DTD WML 1.1//EN" "http://www.wapforum.org/DTD/wml_1.1.xml">
+<wml>
+<head>
+<meta http-equiv="content-type" content="text/vnd.wap.wml; charset=UTF-8" />
+<meta http-equiv="Cache-Control" content="max-age=0" forua="true" />
+<meta http-equiv="Cache-Control" content="must-revalidate" forua="true" />
+<meta http-equiv="Cache-Control" content="no-cache" forua="true" />
+</head>
+<card title="2010年05月...">
+
+<p>
+<a href="ArtRead.php?oid=sina&amp;vt=1&amp;nid=4701280b0100ixd0">2010年05月27日(8798)</a><br/>
+
+<input name="content" size='30' maxlength='2000' value='' emptyok="true" /><br/>
+
+<anchor><go href="ComPub.php?oid=sina&amp;vt=1" method="post" ><postfield name="pt" value="submit"/><postfield name="nid" value="4701280b0100ixd0"/><postfield name="sumcom" value="8798"/><postfield name="title" value="%E9%9F%A9%E5%AF%92"/><postfield name="atitle" value="2010%E5%B9%B405%E6%9C%8827%E6%97%A5"/><postfield name="content11a9" value="$(content)"/><postfield name="nickname11a9" value="$(nickname)"/><postfield name="rflag" value="1620"/></go>发表</anchor><br/><a href="ComPub.php?oid=sina&amp;vt=1&amp;pt=explain&amp;nid=4701280b0100ixd0&amp;sumcom=8798&amp;title=%E9%9F%A9%E5%AF%92&amp;atitle=2010%E5%B9%B405%E6%9C%8827%E6%97%A5">评论说明</a>
+
+<br/><br/>
+<a href="ComList.php?oid=sina&amp;vt=1&amp;nid=4701280b0100ixd0&amp;title=%E9%9F%A9%E5%AF%92&amp;atitle=2010%E5%B9%B405%E6%9C%8827%E6%97%A5">返回上一级</a><br/><a href="http://3g.sina.com.cn/3g/blog/index.php?oid=sina&amp;vt=1">博客</a>&gt;&gt;<a href="ArtList.php?oid=sina&amp;vt=1&amp;uid=1191258123">韩寒</a><br/><a href="myindex.php?oid=sina&amp;vt=1">我的博客</a><br/>
+<br/>
+<a href='http://3g.sina.com.cn/?vt=1'>手机新浪网</a>-<a href='http://3g.sina.com.cn/3g/news/index.php?did=13098&amp;tid=124&amp;vid=84&amp;from=1&amp;vt=1'>导航</a>-<a href='http://3g.sina.com.cn/iask/?p=3gb&amp;vt=1'>搜索</a><br/>[05-27 22:47]<br/>
+</p>
+</card>
+</wml>

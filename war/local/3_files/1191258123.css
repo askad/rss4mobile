@@ -1,0 +1,10 @@
+@charset "utf-8";@import url("http://simg.sinajs.cn/blog7newtpl/css/32/32_1/t.css");
+.sinabloghead .blogtoparea{ left:219px;top:31%;}
+.sinabloghead .blognav{ left:221px;top:67%;}
+body{background-image:none;}body{background-color: rgb(224, 224, 224);}
+.sinabloga{ background-image:none; }
+.sinablogb{ background-image: url(http://static8.photo.sina.com.cn/orignal/4701280bg85a66e91fcb7); }
+.sinablogb{ background-repeat:no-repeat; background-position:center top;}
+.sinabloghead{ background-image: url(http://static3.photo.sina.com.cn/orignal/4701280bg85fe30c32fe2);}
+.sinabloghead{ background-repeat:repeat; background-position:center top;}
+.sinabloghead{ height: 250px; }
