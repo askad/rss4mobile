@@ -9,7 +9,7 @@ import javax.jdo.annotations.PrimaryKey;
 import javax.jdo.annotations.Unique;
 
 @PersistenceCapable(identityType = IdentityType.APPLICATION)
-public class EntitySite {
+public class SiteEntity {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private Long siteId;

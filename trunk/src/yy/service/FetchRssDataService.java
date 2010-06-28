@@ -6,8 +6,8 @@ import java.util.List;
 import javax.jdo.Query;
 
 import yy.dao.GeneralDao;
-import yy.entity.EntityGroup;
-import yy.entity.EntitySite;
+import yy.entity.GroupEntity;
+import yy.entity.SiteEntity;
 import yy.util.ParserRss;
 import yy.util.UserInfor;
 import yy.vo.GroupSiteMap;
@@ -47,18 +47,17 @@ public class FetchRssDataService {
         GroupSiteMap groupSiteMap = new GroupSiteMap();
         // 1.search all groups from DB by userId
 
-        Query queryGroup = generalDao.prepareQuery(EntityGroup.class, "userId", "String");
+        Query queryGroup = generalDao.prepareQuery(GroupEntity.class, "userId", "String");
 
-        Query querySite = generalDao.prepareQuery(EntitySite.class, "groupId", "Long");
+        Query querySite = generalDao.prepareQuery(SiteEntity.class, "groupId", "Long");
 
-        List<EntityGroup> results = (List<EntityGroup>) queryGroup.execute(userId);
-        String key = UserInfor.getUserId();
-        for (EntityGroup entityGroup : results) {
+        List<GroupEntity> results = (List<GroupEntity>) queryGroup.execute(userId);
+        for (GroupEntity groupEntity : results) {
             GroupVo groupVo = new GroupVo();
-            groupVo.setGroupId(entityGroup.getGroupId());
-            groupVo.setGroupName(entityGroup.getGroupName());
+            groupVo.setGroupId(groupEntity.getGroupId());
+            groupVo.setGroupName(groupEntity.getGroupName());
             // 2.search all sites from DB by groupId and userId
-            List<EntitySite> resultSite = (List<EntitySite>) querySite.execute(entityGroup.getGroupId());
+            List<SiteEntity> resultSite = (List<SiteEntity>) querySite.execute(groupEntity.getGroupId());
             List<RssListVo> rssListVoList = parserRssService.getRssDataFromSite(resultSite);
             groupVo.setCount(rssListVoList.size());
             groupSiteMap.put(groupVo, rssListVoList);

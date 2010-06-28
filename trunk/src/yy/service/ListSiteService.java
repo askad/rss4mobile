@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import yy.dao.GeneralDao;
-import yy.entity.EntityGroup;
-import yy.entity.EntitySite;
+import yy.entity.GroupEntity;
+import yy.entity.SiteEntity;
 import yy.vo.SiteListVo;
 
 public class ListSiteService {
@@ -18,24 +18,24 @@ public class ListSiteService {
 
     public List<SiteListVo> getSiteList() {
         List<SiteListVo> siteListVoList = new ArrayList<SiteListVo>();
-        List<EntityGroup> entityGroupList = generalDao.queryByUserId(EntityGroup.class);
-        for (EntityGroup entityGroup : entityGroupList) {
-            List<EntitySite> resultSite = generalDao.query(EntitySite.class, "groupId", "Long", entityGroup
+        List<GroupEntity> entityGroupList = generalDao.queryByUserId(GroupEntity.class);
+        for (GroupEntity groupEntity : entityGroupList) {
+            List<SiteEntity> resultSite = generalDao.query(SiteEntity.class, "groupId", "Long", groupEntity
                     .getGroupId()); 
-            for (EntitySite entitySite : resultSite) {
+            for (SiteEntity siteEntity : resultSite) {
                 SiteListVo siteListVo = new SiteListVo();
-                siteListVo.setGroupId(entityGroup.getGroupId().toString());
-                siteListVo.setGroupName(entityGroup.getGroupName());
-                siteListVo.setSiteId(entitySite.getSiteId().toString());
-                siteListVo.setSiteName(entitySite.getSiteName());
-                siteListVo.setSiteUrl(entitySite.getSiteUrl());
+                siteListVo.setGroupId(groupEntity.getGroupId().toString());
+                siteListVo.setGroupName(groupEntity.getGroupName());
+                siteListVo.setSiteId(siteEntity.getSiteId().toString());
+                siteListVo.setSiteName(siteEntity.getSiteName());
+                siteListVo.setSiteUrl(siteEntity.getSiteUrl());
                 siteListVoList.add(siteListVo);
             }
         }
         return siteListVoList;
     }
     
-    public List<EntityGroup> getGroupList(){
-        return generalDao.queryByUserId(EntityGroup.class);
+    public List<GroupEntity> getGroupList(){
+        return generalDao.queryByUserId(GroupEntity.class);
     }
 }
