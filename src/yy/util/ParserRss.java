@@ -14,7 +14,7 @@ import org.jdom.input.DOMBuilder;
 import org.xml.sax.SAXException;
 
 import yy.YyConst;
-import yy.entity.EntitySite;
+import yy.entity.SiteEntity;
 import yy.vo.RssListVo;
 
 public class ParserRss {
@@ -32,12 +32,12 @@ public class ParserRss {
      * @param querySite
      * @return
      */
-    public List<RssListVo> getRssDataFromSite(List<EntitySite> resultSite) {
+    public List<RssListVo> getRssDataFromSite(List<SiteEntity> resultSite) {
 
         List<RssListVo> rssListVoList = new ArrayList<RssListVo>();
         if (resultSite.size() > 0) {
-            for (EntitySite entitySite : resultSite) {
-                List<RssListVo> rssListVoListTemp = parserListRssData(entitySite.getSiteUrl());
+            for (SiteEntity siteEntity : resultSite) {
+                List<RssListVo> rssListVoListTemp = parserListRssData(siteEntity.getSiteUrl());
                 rssListVoList.addAll(rssListVoListTemp);
             }
         }

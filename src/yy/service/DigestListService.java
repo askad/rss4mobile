@@ -6,7 +6,7 @@ import javax.jdo.Query;
 
 import yy.YyConst;
 import yy.dao.GeneralDao;
-import yy.entity.EntitySite;
+import yy.entity.SiteEntity;
 import yy.util.ParserRss;
 import yy.util.UserInfor;
 import yy.vo.RssListVo;
@@ -34,8 +34,8 @@ public class DigestListService {
         int pageId = Integer.parseInt(pageIdTemp);
         List<RssListVo> rssListVoList = null;
         List<RssListVo> rssListVoListTemp = null;
-        Query querySite = generalDao.prepareQuery(EntitySite.class, "groupId", "Long");
-        List<EntitySite> resultSite = (List<EntitySite>) querySite.execute(Long.parseLong(groupId));
+        Query querySite = generalDao.prepareQuery(SiteEntity.class, "groupId", "Long");
+        List<SiteEntity> resultSite = (List<SiteEntity>) querySite.execute(Long.parseLong(groupId));
         if (resultSite.size() > 0) {
             rssListVoListTemp = parserRssService.getRssDataFromSite(resultSite);
         }
