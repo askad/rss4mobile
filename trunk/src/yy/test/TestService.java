@@ -19,7 +19,7 @@ public class TestService extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action = (String) req.getParameter(ACTION);
+        String action = req.getParameter(ACTION);
         PersistenceManager pm = PMF.getInstance().getPersistenceManager();
         if (action.equals("delete")) {
             List<GroupEntity> entityGroupList = (List<GroupEntity>) pm.newQuery(GroupEntity.class).execute();
