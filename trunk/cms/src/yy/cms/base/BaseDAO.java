@@ -9,14 +9,13 @@ import yy.cms.tools.Commons;
 
 public abstract class BaseDAO<T extends BaseEntity> {
 
+	// SQL AREA
 	private final static String SELECT = "select * from ";
-
 	private final static String WHERE = " where 1=1 ";
-
 	private final static String PLACEHOLDER = " = ? ";
-
 	private final static String AND = " and ";
 
+	// 
 	private String tableName;
 
 	private BaseDBConnection<T> con;
