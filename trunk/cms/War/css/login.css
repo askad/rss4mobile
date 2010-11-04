@@ -1,0 +1,38 @@
+body, input {
+    -x-system-font:none;
+    font-family:Verdana,Arial,Helvetica,sans-serif;
+    font-size:13px;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    line-height:normal;
+}
+.loginplan {
+    -moz-background-clip:border;
+    -moz-background-inline-policy:continuous;
+    -moz-background-origin:padding;
+    background:#F5F8FC none repeat scroll 0 0;
+    border:1px solid #78A3D3;
+    padding:12px;
+    text-align:left;
+    z-index:1;
+    width:300px !important;
+}
+.loginplan_bg {
+    background:#EFEFEF none repeat scroll 0 0;
+    padding:0 3px 3px 0;
+    text-align:left;
+    width:300px;
+    z-index:2;
+}
+#container {
+    position:absolute;
+    width:350px;
+    left:37%;
+    top:33%;
+}
+#errMsgContainer{
+	color:#FF0000
+}
