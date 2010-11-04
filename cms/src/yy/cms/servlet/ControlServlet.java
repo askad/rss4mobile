@@ -21,13 +21,25 @@ public class ControlServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
+		
+		// session validate
 		String userId = (String) session.getAttribute(Commons.USERID);
 		if (userId == null || userId.equals(Commons.BLANK)) {
 			PageDispatcher.dispatcherLogin(req, resp);
 			return;
 		}
-		String nextPage = (String) session.getAttribute(Commons.NEXTPAGEID);
-		BasePage nextpage = PageParser.getCurrentPageFromRequest(req, PageParser.getPageFromName(nextPage));
+		
+		// get some info
+		String nextPageId = (String) session.getAttribute(Commons.NEXTPAGEID);
+		BasePage nextpage = null;
+		try {
+			nextpage = PageParser.getPageClassFromId(nextPageId).newInstance();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		PageParser.getCurrentPageFromRequest(req, PageParser.getPageClassFromId(nextPageId));
 		req.setAttribute(Commons.CURRENTPAGE, nextpage);
 	}
 }

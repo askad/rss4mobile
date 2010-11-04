@@ -38,7 +38,7 @@ public class PageParser {
 	}
 
 	@SuppressWarnings("unchecked")
-	public static Class<? extends BasePage> getPageFromName(String screenId) {
+	public static Class<? extends BasePage> getPageClassFromId(String screenId) {
 
 		if (pageMap.containsKey(screenId)) {
 			try {
