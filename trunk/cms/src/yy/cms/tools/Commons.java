@@ -13,6 +13,8 @@ public class Commons {
 	public final static String CURRENTPAGENAME = "CURRENTPAGENAME";
 
 	public final static String NEXTPAGEID = "NEXTPAGEID";
+	
+	public final static String PREPAGEID = "PREPAGEID";
 
 	// Session
 	public final static String LANGUAGE = "language";
