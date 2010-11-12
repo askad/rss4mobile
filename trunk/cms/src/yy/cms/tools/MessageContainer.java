@@ -33,7 +33,9 @@ public class MessageContainer {
             
             Map<String,String> containerLang = new HashMap<String,String>();
             //TODO need to init it
-            containerLang.put(Commons.ERR_MSG_LOGIN_FAILED, "valid user name or password");
+            containerLang.put(Commons.ER_B0001, "valid user name or password");
+            containerLang.put(Commons.ER_P0001, "failed to instance object");
+            containerLang.put(Commons.ER_P0002, "failed to run service");
             container.put(lang, containerLang);
         }
         
