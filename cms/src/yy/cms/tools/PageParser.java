@@ -21,6 +21,9 @@ public class PageParser {
 
 		BasePage page = null;
 		try {
+			if (c == null) {
+				return null;
+			}
 			page = c.newInstance();
 			Field[] fields = c.getDeclaredFields();
 			for (Field f : fields) {
