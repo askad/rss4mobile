@@ -2,6 +2,7 @@ package yy.cms.servlet;
 
 import java.io.IOException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ public class ControlServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public final static String SERVICENAME_PRE = "yy.cms.service.";
+
 	public final static String SERVICENAME_SUF = "Srevice";
 
 	@Override
@@ -34,7 +36,23 @@ public class ControlServlet extends HttpServlet {
 			return;
 		}
 
-		// get some info
+		// get current page instance
+		String currentPageId = req.getParameter(Commons.CURRENTPAGE);
+		if (currentPageId == null || currentPageId.isEmpty()) {
+			req.setAttribute(Commons.ERR_MSG_REQUEST, MessageContainer.getErrorMsg(req, Commons.ER_P0003));
+			PageDispatcher.dispatcherError(req, resp);
+			return;
+		}
+		BasePage currentPage = (BasePage) PageParser.getCurrentPageFromRequest(req,
+				PageParser.getPageClassFromId(currentPageId));
+
+		if (currentPage == null) {
+			req.setAttribute(Commons.ERR_MSG_REQUEST, MessageContainer.getErrorMsg(req, Commons.ER_P0001));
+			PageDispatcher.dispatcherError(req, resp);
+			return;
+		}
+
+		// get next page instance
 		String nextPageId = (String) session.getAttribute(Commons.NEXTPAGEID);
 		BasePage nextpage = null;
 		try {
@@ -44,25 +62,38 @@ public class ControlServlet extends HttpServlet {
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		}
+
+		// instance failed
 		if (nextpage == null) {
 			req.setAttribute(Commons.ERR_MSG_REQUEST, MessageContainer.getErrorMsg(req, Commons.ER_P0001));
 			PageDispatcher.dispatcherError(req, resp);
 			return;
 		}
-		req.setAttribute(Commons.CURRENTPAGE, nextpage);
+		boolean flag = callService(nextPageId, currentPage, nextpage);
 
-		boolean flag = callProgram(nextPageId, nextpage);
-
+		// run service failed
 		if (!flag) {
 			req.setAttribute(Commons.ERR_MSG_REQUEST, MessageContainer.getErrorMsg(req, Commons.ER_P0002));
 			PageDispatcher.dispatcherError(req, resp);
 		}
+
+		req.setAttribute(Commons.CURRENTPAGE, nextpage);
+
+		ServletContext sc = getServletConfig().getServletContext();
+		flag = PageDispatcher.dispatcherNext(sc, nextPageId, req, resp);
+
+		// dispatch failed
+		if (!flag) {
+			req.setAttribute(Commons.ERR_MSG_REQUEST, MessageContainer.getErrorMsg(req, Commons.ER_P0004));
+			PageDispatcher.dispatcherError(req, resp);
+		}
 	}
 
-	private boolean callProgram(String pageId, BasePage page) {
+	private boolean callService(String pageId, BasePage currentPage, BasePage nextPage) {
 		String serviceName = SERVICENAME_PRE + pageId + SERVICENAME_SUF;
 		try {
-			BaseService baseService = (BaseService)Class.forName(serviceName).newInstance();
+			BaseService baseService = (BaseService) Class.forName(serviceName).newInstance();
+			baseService.doProcess(currentPage, nextPage);
 			return true;
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

@@ -36,6 +36,8 @@ public class MessageContainer {
             containerLang.put(Commons.ER_B0001, "valid user name or password");
             containerLang.put(Commons.ER_P0001, "failed to instance object");
             containerLang.put(Commons.ER_P0002, "failed to run service");
+            containerLang.put(Commons.ER_P0003, "CURRENTPAGE field not found");
+            containerLang.put(Commons.ER_P0004, "failed to forward");
             container.put(lang, containerLang);
         }
         
