@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="100%" height="100%">
+	<mx:Label text="HELLO,窝儿的~" width="100%" height="70%" textAlign="center" fontWeight="bold" fontSize="22" verticalCenter="46" horizontalCenter="20"/>
+	
+</mx:Panel>

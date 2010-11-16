@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<service id="remoting-service" 
+    class="flex.messaging.services.RemotingService">
+    <adapters>
+        <adapter-definition id="java-object" class="flex.messaging.services.remoting.adapters.JavaAdapter" default="true"/>
+    </adapters>
+    <default-channels>
+        <channel ref="my-amf"/>
+    </default-channels>
+	<destination id="GetData"> 
+		<properties>
+			<source>com.yy.SearchClass</source>
+		</properties>
+	</destination>
+	<destination id="login"> 
+		<properties>
+			<source>yy.cms.service.LoginService</source>
+		</properties>
+	</destination>
+</service>

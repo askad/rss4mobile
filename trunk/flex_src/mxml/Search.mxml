@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="100%" height="100%" creationComplete="creationComplete();">
+	<mx:TextInput x="88" y="10" id="usname"/>
+	<mx:Label x="10" y="12" text="user name:" textAlign="center" fontWeight="bold"/>
+	<mx:Label x="10" y="51" text="date: " width="70" textAlign="center" fontWeight="bold"/>
+	<mx:DateField x="88" y="49" width="160"/>
+	<mx:Label x="302" y="51" text="~" fontWeight="bold" textAlign="center"/>
+	<mx:DateField x="386" y="49" width="160"/>
+	<mx:DataGrid x="18" y="108" width="93%" height="60%" id="result_g" dataProvider="{this.dglist}">
+		<mx:columns>
+			<mx:DataGridColumn headerText="dgname" dataField="dgname" />
+			<mx:DataGridColumn headerText="dgtitle" dataField="dgtitle"/>
+			<mx:DataGridColumn headerText="dgtime" dataField="dgtime"/>
+		</mx:columns>
+	</mx:DataGrid>
+	<mx:Button right="100" y="79" label="search" width="65" click="search()"/>
+	<mx:Button right="20" y="79" label="reset" width="65"/>
+	<mx:Script>
+		<![CDATA[
+			import mx.rpc.events.ResultEvent;
+			import mx.collections.ArrayCollection;
+			import com.tci.exec.XOXO;
+			import mx.rpc.remoting.RemoteObject;
+			[Bindable]
+			private var dglist:ArrayCollection;
+			private var _service:RemoteObject;
+			private function creationComplete():void{
+				//setDatagrid();
+			}
+			private function setDatagrid(e:ResultEvent):void{
+				var x:ArrayCollection = e.result as ArrayCollection;
+				result_g.dataProvider = e.result;
+				var xo:XOXO = x[1] as XOXO;
+				usname.text = xo.dgtime;
+			}
+			private function search():void{
+				_service = new RemoteObject();
+				_service.destination = "GetData";
+				_service.addEventListener(ResultEvent.RESULT,setDatagrid);
+				_service.getGridData();
+			}
+			
+		]]>
+	</mx:Script>
+</mx:Panel>
