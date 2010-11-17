@@ -39,7 +39,7 @@ public class ControlServlet extends HttpServlet {
 		// get current page instance
 		String currentPageId = req.getParameter(Commons.CURRENTPAGE);
 		if (currentPageId == null || currentPageId.isEmpty()) {
-			req.setAttribute(Commons.ERR_MSG_REQUEST, MessageContainer.getErrorMsg(req, Commons.ER_P0003));
+			//req.setAttribute(Commons.ERR_MSG_REQUEST, MessageContainer.getErrorMsg(req, Commons.ER_P0003));
 			PageDispatcher.dispatcherError(req, resp);
 			return;
 		}
@@ -47,7 +47,7 @@ public class ControlServlet extends HttpServlet {
 				PageParser.getPageClassFromId(currentPageId));
 
 		if (currentPage == null) {
-			req.setAttribute(Commons.ERR_MSG_REQUEST, MessageContainer.getErrorMsg(req, Commons.ER_P0001));
+			//req.setAttribute(Commons.ERR_MSG_REQUEST, MessageContainer.getErrorMsg(req, Commons.ER_P0001));
 			PageDispatcher.dispatcherError(req, resp);
 			return;
 		}
@@ -65,7 +65,7 @@ public class ControlServlet extends HttpServlet {
 
 		// instance failed
 		if (nextpage == null) {
-			req.setAttribute(Commons.ERR_MSG_REQUEST, MessageContainer.getErrorMsg(req, Commons.ER_P0001));
+			//req.setAttribute(Commons.ERR_MSG_REQUEST, MessageContainer.getErrorMsg(req, Commons.ER_P0001));
 			PageDispatcher.dispatcherError(req, resp);
 			return;
 		}
@@ -73,7 +73,7 @@ public class ControlServlet extends HttpServlet {
 
 		// run service failed
 		if (!flag) {
-			req.setAttribute(Commons.ERR_MSG_REQUEST, MessageContainer.getErrorMsg(req, Commons.ER_P0002));
+			//req.setAttribute(Commons.ERR_MSG_REQUEST, MessageContainer.getErrorMsg(req, Commons.ER_P0002));
 			PageDispatcher.dispatcherError(req, resp);
 		}
 
@@ -84,7 +84,7 @@ public class ControlServlet extends HttpServlet {
 
 		// dispatch failed
 		if (!flag) {
-			req.setAttribute(Commons.ERR_MSG_REQUEST, MessageContainer.getErrorMsg(req, Commons.ER_P0004));
+			//req.setAttribute(Commons.ERR_MSG_REQUEST, MessageContainer.getErrorMsg(req, Commons.ER_P0004));
 			PageDispatcher.dispatcherError(req, resp);
 		}
 	}

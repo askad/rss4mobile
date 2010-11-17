@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 			initUser(req, userInfoEntity);
 			PageDispatcher.dispatcherByPath("/Pages/Main.jsp", req, resp);
 		} else {
-			loginPage.setErrorMsg(MessageContainer.getErrorMsg(req, Commons.ER_B0001));
+			//loginPage.setErrorMsg(MessageContainer.getErrorMsg(req, Commons.ER_B0001));
 			PageDispatcher.dispatcherLogin(req, resp);
 		}
 	}
