@@ -9,7 +9,7 @@
 <mx:Script>
 	<![CDATA[
 		import mx.collections.ArrayCollection;
-		import com.tci.exec.ItemBean;
+		//import com.tci.exec.ItemBean;
 		[Bindable]
 		private var nowDate:String = new Date().toDateString();
 		[Bindable]
@@ -19,9 +19,9 @@
 		private function InitComponent():void{
 			checkAuth();
 			menu_list = new ArrayCollection();
-			menu_list.addItem(new ItemBean("",0));
-			menu_list.addItem(new ItemBean("add",1));
-			menu_list.addItem(new ItemBean("search",2));
+			//menu_list.addItem(new ItemBean("",0));
+			//menu_list.addItem(new ItemBean("add",1));
+			//menu_list.addItem(new ItemBean("search",2));
 		}
 		private function onMenuClick():void{
 			vs_content.selectedIndex = menu.selectedItem.value;
