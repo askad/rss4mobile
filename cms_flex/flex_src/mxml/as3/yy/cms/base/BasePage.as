@@ -1,4 +1,4 @@
-package yy.cms.base
+package as3.yy.cms.base
 {
 
 	[Bindable]
@@ -11,7 +11,7 @@ package yy.cms.base
 		private var usrId:String;
 
 		// can't instance this
-		public function BasePage(self:Base)
+		public function BasePage(self:BasePage)
 		{
 			if (self != this)
 			{

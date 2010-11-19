@@ -1,6 +1,6 @@
 import mx.rpc.events.ResultEvent;
 import mx.rpc.remoting.RemoteObject;
-import flash.events.Event;
+import as3.yy.cms.pages.LoginPage;
 private var _service:RemoteObject;
 
 private function initComponent():void
@@ -21,9 +21,12 @@ private function onLogin():void
 
 private function checkUser(e:ResultEvent):void
 {
-	if (e.result.toString() == "4869") //type judeg
+	if (e.result instanceof LoginPage)
 	{
-		writeCookie();
+		var loginPage = e.result as LoginPage;
+		var uname = loginPage.getUname();
+		trace(uname);
+		//writeCookie();
 		var url:String="http://localhost:8080/CMS_Flex/Main.html";
 		var request:URLRequest=new URLRequest(url);
 		navigateToURL(request, "_top");

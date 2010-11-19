@@ -2,7 +2,7 @@
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical">
 	<mx:Spacer width="100%" height="30"/>
 	<mx:Panel layout="absolute" width="256" height="194" name="Login">
-	<mx:Script source="../as/login.as"/>
+	<mx:Script source="as3/login.as"/>
 		<mx:TextInput x="65" y="10" width="145" id="usname"/>
 		<mx:TextInput x="65" y="58" width="145" id="password"/>
 		<mx:Label x="10" y="12" text="name" width="47"/>
