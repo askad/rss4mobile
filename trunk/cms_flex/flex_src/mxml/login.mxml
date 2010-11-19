@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical">
 	<mx:Spacer width="100%" height="30"/>
-	<mx:Panel layout="absolute" width="256" height="194" name="Login">
+	<mx:Panel layout="absolute" width="256" height="175" name="Login">
 	<mx:Script source="/as3/login.as"/>
 		<mx:TextInput x="65" y="10" width="145" id="usname"/>
 		<mx:TextInput x="65" y="58" width="145" id="password"/>
 		<mx:Label x="10" y="12" text="name" width="47"/>
 		<mx:Label x="1" y="60" text="password"/>
-		<mx:Button x="124" y="98" label="login" width="86" id="btn_login" click="onLogin()"/>
-		<mx:LinkButton x="124" y="128" label="not Register?" width="96"/>
-		<mx:CheckBox x="23" y="98" label="remeber me" enabled="false"/>
+		<mx:Button x="124" y="98" label="login" width="86" id="btnLogin" click="onLogin()"/>
+		<!--mx:LinkButton x="124" y="128" label="not Register?" width="96"/-->
+		<mx:CheckBox x="23" y="98" label="remeber me" enabled="true" id="checkRemeber"/>
 	</mx:Panel>
 <mx:ApplicationControlBar dock="true" height="30">
 	<mx:Label text="CMS system"/>
