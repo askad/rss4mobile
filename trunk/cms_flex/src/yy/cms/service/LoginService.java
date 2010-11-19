@@ -17,14 +17,12 @@ public class LoginService {
 		LoginPage loginPage = new LoginPage();
 		FlexSession session = FlexContext.getFlexSession();
 
-		loginPage.setUname("sss");
-		System.out.println(usname+":"+psword);
-//		// get default language
-//		String lang = (String) session.getAttribute(Commons.LANGUAGE);
-//		if (lang == null || lang.isEmpty()) {
-//			lang = Commons.CHN;
-//		}
-//
+		// get default language
+		String lang = (String) session.getAttribute(Commons.LANGUAGE);
+		if (lang == null || lang.isEmpty()) {
+			lang = Commons.CHN;
+		}
+
 //		UserInfoEntity userInfoEntity = userInfoDAO.getUserInfo(usname);
 //
 //		if (userInfoEntity != null && userInfoEntity.getUserpass() != null
