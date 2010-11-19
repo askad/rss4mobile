@@ -17,23 +17,25 @@ public class LoginService {
 		LoginPage loginPage = new LoginPage();
 		FlexSession session = FlexContext.getFlexSession();
 
-		// get default language
-		String lang = (String) session.getAttribute(Commons.LANGUAGE);
-		if (lang == null || lang.isEmpty()) {
-			lang = Commons.CHN;
-		}
-
-		UserInfoEntity userInfoEntity = userInfoDAO.getUserInfo(usname);
-
-		if (userInfoEntity != null && userInfoEntity.getUserpass() != null
-				&& userInfoEntity.getUserpass().equals(psword)) {
-			initUser(session, userInfoEntity);
-			loginPage.setUname(usname);
-
-		} else {
-			loginPage.setErrorMsg(MessageContainer.getErrorMsg(lang, Commons.ER_B0001));
-
-		}
+		loginPage.setUname("sss");
+		System.out.println(usname+":"+psword);
+//		// get default language
+//		String lang = (String) session.getAttribute(Commons.LANGUAGE);
+//		if (lang == null || lang.isEmpty()) {
+//			lang = Commons.CHN;
+//		}
+//
+//		UserInfoEntity userInfoEntity = userInfoDAO.getUserInfo(usname);
+//
+//		if (userInfoEntity != null && userInfoEntity.getUserpass() != null
+//				&& userInfoEntity.getUserpass().equals(psword)) {
+//			initUser(session, userInfoEntity);
+//			loginPage.setUname(usname);
+//
+//		} else {
+//			loginPage.setErrorMsg(MessageContainer.getErrorMsg(lang, Commons.ER_B0001));
+//
+//		}
 		return loginPage;
 	}
 
