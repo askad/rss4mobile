@@ -5,10 +5,10 @@ package as3.yy.cms.base
 	[RemoteClass(alias="yy.cms.base.BasePage")]
 	public class BasePage
 	{
-		private var errorMsg:String;
-		private var inforMsg:String;
-		private var pageName:String;
-		private var usrId:String;
+		public var errorMsg:String;
+		public var inforMsg:String;
+		public var pageName:String;
+		public var usrId:String;
 
 		// can't instance this
 		public function BasePage(self:BasePage)
