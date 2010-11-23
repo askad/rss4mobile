@@ -5,19 +5,23 @@ import java.sql.SQLException;
 
 import yy.cms.base.BaseDAO;
 import yy.cms.entity.UserInfoEntity;
+import yy.cms.service.LoginService;
+import yy.cms.tools.Logger;
 
 public class UserInfoDAO extends BaseDAO<UserInfoEntity> {
+
+	private final Logger logger = new Logger(LoginService.class);
 
 	public UserInfoDAO() {
 		setTableName(UserInfoEntity.class);
 	}
 
 	public UserInfoEntity getUserInfo(String name) {
-		PreparedStatement pst = getPreparedStatementForSelect(new String[] { UserInfoEntity.USERNAME});
+		PreparedStatement pst = getPreparedStatementForSelect(new String[] { UserInfoEntity.USERNAME });
 		try {
 			pst.setString(1, name);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			logger.printConsole(e.toString());
 		}
 		return getEntity(pst);
 	}
