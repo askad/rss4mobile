@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
 <web-app>
-
+	<filter>
+		<filter-name>EncodeFilter</filter-name>
+		<filter-class>yy.cms.filter.EncodeFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>EncodeFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
     <display-name>CMS</display-name>
     <description>BlazeDS Application</description>
 
@@ -37,15 +44,14 @@
         <welcome-file>index.htm</welcome-file>
     </welcome-file-list>
 
-    <!-- for WebSphere deployment, please uncomment -->
-    <!--
-    <resource-ref>
-        <description>Flex Messaging WorkManager</description>
-        <res-ref-name>wm/MessagingWorkManager</res-ref-name>
-        <res-type>com.ibm.websphere.asynchbeans.WorkManager</res-type>
-        <res-auth>Container</res-auth>
-        <res-sharing-scope>Shareable</res-sharing-scope>
-    </resource-ref>
-    -->
+<!-- YY servlet -->
+	<servlet>
+		<servlet-name>ControlServlet</servlet-name>
+		<servlet-class>yy.cms.servlet.ControlServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ControlServlet</servlet-name>
+		<url-pattern>/main</url-pattern>
+	</servlet-mapping>
 
 </web-app>

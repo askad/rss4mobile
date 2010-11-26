@@ -7,14 +7,19 @@
     <default-channels>
         <channel ref="my-amf"/>
     </default-channels>
-	<destination id="GetData"> 
-		<properties>
-			<source>com.yy.SearchClass</source>
-		</properties>
-	</destination>
 	<destination id="login"> 
 		<properties>
 			<source>yy.cms.service.LoginService</source>
+		</properties>
+	</destination>
+	<destination id="logout">
+		<properties>
+			<source>yy.cms.service.LogoutService</source>
+		</properties>
+	</destination>
+	<destination id="callService"> 
+		<properties>
+			<source>yy.cms.service.CommonService</source>
 		</properties>
 	</destination>
 </service>
