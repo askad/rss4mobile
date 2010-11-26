@@ -3,8 +3,6 @@ package yy.cms.tools;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
 public class MessageContainer {
 
 	private static Map<String, Map<String, String>> errMsgContainer = getInitContainer();

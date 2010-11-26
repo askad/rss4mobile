@@ -28,9 +28,10 @@ public class LoginService {
 
 		userInfoDAO = new UserInfoDAO();
 		UserInfoEntity userInfoEntity = new UserInfoEntity();//userInfoDAO.getUserInfo(usname);
-		userInfoEntity.setUsername("");
+		userInfoEntity.setUsername("yy");
 		userInfoEntity.setUserpass("yy");
-		
+		userInfoEntity.setUserId("yy");
+
 		if (userInfoEntity != null && userInfoEntity.getUserpass() != null
 				&& userInfoEntity.getUserpass().equals(psword)) {
 			initUser(session, userInfoEntity);
@@ -39,18 +40,14 @@ public class LoginService {
 		} else {
 			loginPage.setErrorMsg(MessageContainer.getErrorMsg(lang, Commons.ER_B0001));
 		}
-		logger.printConsole(loginPage.getErrorMsg());
+		logger.printConsole(usname);
 		return loginPage;
-	}
-
-	public int checkUser(String name, String pass) {
-		System.out.println(name + " xxxxxin check " + pass);
-		return 4869;
 	}
 
 	private void initUser(FlexSession session, UserInfoEntity userInfoEntity) {
 		session.setAttribute(Commons.USERNAME, userInfoEntity.getUsername());
 		session.setAttribute(Commons.USERID, userInfoEntity.getUserid());
+		session.setAttribute(Commons.CURRENTPAGEID, "S001");
 		session.setAttribute(Commons.NEXTPAGEID, "S001");
 	}
 }

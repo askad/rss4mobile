@@ -9,6 +9,16 @@ public abstract class BasePage {
 
 	private String pageName = Commons.BLANK;
 
+	private Boolean isAuthorized = false;//must be Boolean,boolean can not be work
+
+	public Boolean getIsAuthorized() {
+		return isAuthorized;
+	}
+
+	public void setIsAuthorized(Boolean isAuthorized) {
+		this.isAuthorized = isAuthorized;
+	}
+
 	public String getErrorMsg() {
 		return errorMsg;
 	}
