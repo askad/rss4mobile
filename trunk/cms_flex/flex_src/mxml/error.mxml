@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" pageTitle="CMS Error Page">
+	<mx:Spacer width="100%" height="30"/>
+	<mx:Panel layout="absolute" width="256" height="175" name="Login">
+	</mx:Panel>
+<mx:ApplicationControlBar dock="true" height="30">
+	<mx:Label text="CMS system"/>
+</mx:ApplicationControlBar>
+</mx:Application>

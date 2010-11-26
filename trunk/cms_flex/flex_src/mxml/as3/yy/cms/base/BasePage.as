@@ -9,6 +9,7 @@ package as3.yy.cms.base
 		public var inforMsg:String;
 		public var pageName:String;
 		public var usrId:String;
+		public var isAuthorized:Boolean;
 
 		// can't instance this
 		public function BasePage(self:BasePage)
@@ -43,10 +44,18 @@ package as3.yy.cms.base
 		{
 			return pageName;
 		}
-
 		public function setPageName(pageName:String):void
 		{
 			this.pageName=pageName;
+		}
+		public function setIsAuthorized(isAuthorized:Boolean):void
+		{
+			this.isAuthorized = isAuthorized;
+		}
+		
+		public function getIsAuthorized():Boolean
+		{
+			return isAuthorized;
 		}
 	}
 }
