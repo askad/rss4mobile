@@ -18,7 +18,7 @@ public abstract class BaseService implements BaseValidator {
 		return FlexContext.getFlexSession();
 	}
 
-	protected boolean doAuthorize() {
+	public boolean doAuthorize() {
 
 		FlexSession session = getSession();
 		// session validate

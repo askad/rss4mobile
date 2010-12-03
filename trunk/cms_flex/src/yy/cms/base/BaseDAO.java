@@ -5,14 +5,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
+
+import yy.cms.service.LoginService;
 import yy.cms.tools.Commons;
 
 public abstract class BaseDAO<T extends BaseEntity> {
 
+	private static Logger logger = Logger.getLogger(LoginService.class);
+
 	// SQL AREA
 	private final static String SELECT = "select * from ";
+
 	private final static String WHERE = " where 1=1 ";
+
 	private final static String PLACEHOLDER = " = ? ";
+
 	private final static String AND = " and ";
 
 	// 
@@ -58,7 +66,11 @@ public abstract class BaseDAO<T extends BaseEntity> {
 		StringBuilder sbsql = new StringBuilder(SELECT);
 		sbsql.append(tableName);
 		sbsql.append(getConditationSql(names));
-		return con.getPreparedStatement(sbsql.toString());
+		String sql = sbsql.toString();
+		
+		logger.info("SQL:" + sql);
+		
+		return con.getPreparedStatement(sql);
 	}
 
 	protected void setTableName(Class<T> cl) {

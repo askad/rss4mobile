@@ -1,12 +1,13 @@
 package yy.cms.service;
 
+import org.apache.log4j.Logger;
+
 import yy.cms.base.BasePage;
 import yy.cms.base.BaseService;
-import yy.cms.tools.Logger;
 
 public class CommonService {
 
-	private final Logger logger = new Logger(CommonService.class);
+	private final Logger logger = Logger.getLogger(CommonService.class);
 
 	public final static String SERVICENAME_PRE = "yy.cms.service.";
 
@@ -16,6 +17,10 @@ public class CommonService {
 		serviceName = SERVICENAME_PRE + serviceName;
 		try {
 			BaseService baseService = (BaseService) Class.forName(serviceName).newInstance();
+			if(!baseService.doAuthorize()){
+				return null;
+			}
+			logger.info(serviceName);
 			return baseService.doInit();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -31,6 +36,10 @@ public class CommonService {
 		serviceName = SERVICENAME_PRE + serviceName;
 		try {
 			BaseService baseService = (BaseService) Class.forName(serviceName).newInstance();
+			if(!baseService.doAuthorize()){
+				return null;
+			}
+			logger.info(serviceName);
 			return baseService.doProcess(currentPage);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

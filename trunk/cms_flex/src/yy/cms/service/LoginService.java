@@ -1,11 +1,13 @@
 package yy.cms.service;
 
+import org.apache.log4j.Logger;
+
 import yy.cms.dao.UserInfoDAO;
 import yy.cms.entity.UserInfoEntity;
 import yy.cms.pages.LoginPage;
 import yy.cms.tools.Commons;
-import yy.cms.tools.Logger;
 import yy.cms.tools.MessageContainer;
+import yy.cms.tools.Validator;
 import flex.messaging.FlexContext;
 import flex.messaging.FlexSession;
 
@@ -13,7 +15,7 @@ public class LoginService {
 
 	private UserInfoDAO userInfoDAO;
 
-	private final Logger logger = new Logger(LoginService.class);
+	private static Logger logger = Logger.getLogger(LoginService.class);
 
 	public LoginPage onLogin(String usname, String psword) {
 
@@ -27,20 +29,17 @@ public class LoginService {
 		}
 
 		userInfoDAO = new UserInfoDAO();
-		UserInfoEntity userInfoEntity = new UserInfoEntity();//userInfoDAO.getUserInfo(usname);
-		userInfoEntity.setUsername("yy");
-		userInfoEntity.setUserpass("yy");
-		userInfoEntity.setUserId("yy");
+		UserInfoEntity userInfoEntity = userInfoDAO.getUserInfo(usname);
 
 		if (userInfoEntity != null && userInfoEntity.getUserpass() != null
 				&& userInfoEntity.getUserpass().equals(psword)) {
 			initUser(session, userInfoEntity);
 			loginPage.setUname(usname);
-
+			logger.info(usname + " sucess");
 		} else {
+			logger.error(Validator.getIpAddr() + "login failed");
 			loginPage.setErrorMsg(MessageContainer.getErrorMsg(lang, Commons.ER_B0001));
 		}
-		logger.printConsole(usname);
 		return loginPage;
 	}
 

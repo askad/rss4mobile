@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import yy.cms.base.BasePage;
 import yy.cms.base.BaseService;
 import yy.cms.tools.Commons;
-import yy.cms.tools.Logger;
 import yy.cms.tools.PageDispatcher;
-import yy.cms.tools.PageParser;
 
 public class ControlServlet extends HttpServlet {
 
@@ -24,7 +24,7 @@ public class ControlServlet extends HttpServlet {
 
 	public final static String SERVICENAME_SUF = "Service";
 
-	private final Logger logger = new Logger(ControlServlet.class);
+	private final Logger logger = Logger.getLogger(ControlServlet.class);
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
