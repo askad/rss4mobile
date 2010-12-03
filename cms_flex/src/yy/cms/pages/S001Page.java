@@ -5,14 +5,18 @@ import java.util.List;
 import yy.cms.base.BasePage;
 
 public class S001Page extends BasePage{
-	private List menuList;
-
-	public List getMenuList() {
-		return menuList;
+	private List menunameList;
+	private List menuvalueList;
+	public List getMenuvalueList() {
+		return menuvalueList;
 	}
-
-	public void setMenuList(List menuList) {
-		this.menuList = menuList;
+	public void setMenuvalueList(List menuvalueList) {
+		this.menuvalueList = menuvalueList;
 	}
-	
+	public List getMenunameList() {
+		return menunameList;
+	}
+	public void setMenunameList(List menunameList) {
+		this.menunameList = menunameList;
+	}
 }

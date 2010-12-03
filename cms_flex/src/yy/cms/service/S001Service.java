@@ -8,6 +8,7 @@ import yy.cms.base.BaseService;
 import yy.cms.pages.S001Page;
 import yy.cms.pages.S002Page;
 import yy.cms.tools.Commons;
+import yy.cms.vo.ItemBean;
 import flex.messaging.FlexSession;
 
 public class S001Service extends BaseService {
@@ -20,17 +21,17 @@ public class S001Service extends BaseService {
 	public BasePage doInit() {
 
 		currentPage = new S001Page();
-		boolean flag = doAuthorize();
-		currentPage.setIsAuthorized(flag);
-		if (!flag) {
-			return currentPage;
-		}
-
-		List<String> menuList = new ArrayList<String>();
-		menuList.add("Home");
-		menuList.add("Add");
-		menuList.add("Search");
-		currentPage.setMenuList(menuList);
+		List<String> menunameList = new ArrayList<String>();
+		menunameList.add("Home");
+		menunameList.add("Add");
+		menunameList.add("Search");
+		currentPage.setMenunameList(menunameList);
+		
+		List<String> menuvalueList = new ArrayList<String>();
+		menuvalueList.add("S001Main.swf");
+		menuvalueList.add("Add.swf");
+		menuvalueList.add("Search.swf");
+		currentPage.setMenuvalueList(menuvalueList);
 
 		FlexSession session = getSession();
 		session.setAttribute(Commons.NEXTPAGEID, "S002");

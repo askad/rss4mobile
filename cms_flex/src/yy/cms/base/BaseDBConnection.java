@@ -21,7 +21,6 @@ public class BaseDBConnection<T> {
 	private String cons = "jdbc:oracle:thin:@20.193.27.67:1521:orcl";
 
 	private String dbUserName = "vm1dta";
-
 	private String dbUserPass = "vm1dta12#$";
 
 	public PreparedStatement getPreparedStatement(String sql) {
