@@ -7,7 +7,7 @@ package as3.yy.cms.tools{
 	        return trimBack(trimFront(str, char), char);
 	    }
 	
-	    public static function trimFront(str:String, char:String):String {
+	    public static function trimFront(str:String, char:String=" "):String {
 	        char = stringToCharacter(char);
 	        if (str.charAt(0) == char) {
 	            str = trimFront(str.substring(1), char);
@@ -15,7 +15,7 @@ package as3.yy.cms.tools{
 	        return str;
 	    }
 	
-	    public static function trimBack(str:String, char:String):String {
+	    public static function trimBack(str:String, char:String=" "):String {
 	        char = stringToCharacter(char);
 	        if (str.charAt(str.length - 1) == char) {
 	            str = trimBack(str.substring(0, str.length - 1), char);
@@ -31,8 +31,7 @@ package as3.yy.cms.tools{
     	}
 	    
 	    public static function isEmptyStr(str:String):Boolean{
-			var strTemp:String = trim(str);
-			if(strTemp == null || strTemp == ""){
+			if(str == null || trim(str) == ""){
 				return true;
 			}
 			return false;

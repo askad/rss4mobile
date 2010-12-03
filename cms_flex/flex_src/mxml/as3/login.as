@@ -5,8 +5,8 @@ import mx.rpc.events.ResultEvent;
 import mx.rpc.remoting.RemoteObject;
 import as3.yy.cms.tools.Commons;
 import as3.yy.cms.tools.StringUtil;
-private var _service:RemoteObject;
-
+private var _loginService:RemoteObject;
+include "commonscript.as"; 
 private function initComponent():void
 {
 	initCookie();
@@ -22,25 +22,21 @@ private function onLogin():void
 	var pass:String=password.text;
 	
 	if(uname == null || uname == ""){
-		Alert.show("username must be input", Commons.WARNING);
-		usname.setStyle("borderColor","red");
+		errorShow(usname,"username must be input");
 		btnLogin.enabled=true;
-		usname.setFocus();
 		return;
 	}
 	usname.clearStyle("borderColor");
 	if(pass == null || pass == ""){
-		Alert.show("password must be input", Commons.WARNING);
-		password.setStyle("borderColor","red");
-		password.setFocus();
+		errorShow(password,"password must be input");
 		btnLogin.enabled=true;
 		return;
 	}
 	password.clearStyle("borderColor");
-	_service = new RemoteObject();
-	_service.destination="login";
-	_service.addEventListener(ResultEvent.RESULT, checkUser);
-	_service.onLogin(uname, pass);
+	_loginService = new RemoteObject();
+	_loginService.destination="login";
+	_loginService.addEventListener(ResultEvent.RESULT, checkUser);
+	_loginService.onLogin(uname, pass);
 }
 
 private function checkUser(e:ResultEvent):void

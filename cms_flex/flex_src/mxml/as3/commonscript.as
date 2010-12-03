@@ -1,7 +1,8 @@
+import as3.yy.cms.tools.Commons;
+
+import mx.controls.Alert;
 import mx.rpc.events.ResultEvent;
 import mx.rpc.remoting.RemoteObject;
-import as3.yy.cms.tools.Commons;
-import as3.yy.cms.tools.StringUtil;
 
 private var _service:RemoteObject;
 /**
@@ -29,4 +30,9 @@ private function doProcess(destination:String,func:Function):void{
 	_service.destination = "callService";
 	_service.addEventListener(ResultEvent.RESULT, func);
 	_service.doProcess(destination);
+}
+private function errorShow(item:Object,msg:String):void{
+	Alert.show(msg, Commons.WARNING);
+	item.setStyle("borderColor","red");
+	item.setFocus();
 }

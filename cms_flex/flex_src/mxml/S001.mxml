@@ -4,7 +4,7 @@
 <mx:ApplicationControlBar dock="true">
 	<mx:Label text="CMS system" width="350" id="title"/>
 </mx:ApplicationControlBar>
-<mx:Label text="{this.nowDate}" top="5" fontSize="12"/>
+<mx:Label id="msgBar" text="{this.nowDate}" top="5" fontSize="12"/>
 <mx:Button right="10" top="10" label="Logout" click="logout();"/>
 
 <mx:Script source="/as3/commonscript.as"/>
@@ -17,12 +17,9 @@
 		labelField="name" dataProvider="{this.menuList}"
 		alpha="0.21" width="20%" styleName="menu" paddingRight="0" paddingLeft="0"></mx:List>
 	<mx:Button id="menuControl" width="8" height="100%" click="convertMenuState();" label="close"/>
-	<mx:ViewStack width="100%" height="100%" id="vsContent" paddingLeft="0">
-		<view:S001Main id="indexpage" hideEffect="WipeUp" showEffect="WipeDown" paddingLeft="0"></view:S001Main>
-		<view:Add id="addpage" hideEffect="WipeUp" showEffect="WipeDown"></view:Add>
-		<view:Search id="searchpage" hideEffect="WipeUp" showEffect="WipeDown"></view:Search>
-	</mx:ViewStack>
+	<mx:SWFLoader width="100%" height="100%" id="myFrame" visible="true" source="S001Main.swf"/>
 </mx:HBox>
 
 <mx:Style source="../css/menu.css"/>
+
 </mx:Application>
