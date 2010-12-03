@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
+	xmlns:view="*">
 <mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="100%" height="100%">
 	<mx:TextArea x="26" y="95" width="93%" height="119"/>
 	<mx:Button x="648" y="232" label="submit"/>
@@ -6,3 +8,4 @@
 	<mx:Label x="26" y="39" text="title:" width="48" textAlign="center" fontWeight="bold" fontSize="12"/>
 	<mx:Label x="26" y="67" text="Message:" textAlign="center" fontWeight="bold" fontSize="12"/>
 </mx:Panel>
+</mx:Application>
