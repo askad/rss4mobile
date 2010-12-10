@@ -2,7 +2,6 @@ package yy.cms.base;
 
 import java.lang.reflect.Field;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -11,26 +10,26 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
+import yy.cms.tools.DBConnectionManger;
+
 public class BaseDBConnection<T> {
 	private Connection con;
 
 	private PreparedStatement st;
+	private DBConnectionManger dbcm;
 
-	private String dri = "oracle.jdbc.driver.OracleDriver";
-
-	private String cons = "jdbc:oracle:thin:@20.193.27.67:1521:orcl";
-
-	private String dbUserName = "vm1dta";
-	private String dbUserPass = "vm1dta12#$";
+	public BaseDBConnection() {
+		dbcm = DBConnectionManger.getInstance();
+		con = dbcm.getCon();
+	}
 
 	public PreparedStatement getPreparedStatement(String sql) {
 		try {
-			Class.forName(dri);
-			con = DriverManager.getConnection(cons, dbUserName, dbUserPass);
+			if (con == null || con.isClosed()) {
+				con = dbcm.getCon();
+			}
 			st = con.prepareStatement(sql);
 			return st;
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -43,11 +42,23 @@ public class BaseDBConnection<T> {
 			ResultSet rs = st.executeQuery();
 			list = changeResultSetToEntity(rs, destClass);
 			st.close();
-			con.close();
+			dbcm.freeCon(con);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	public int execUpdSql() {
+		int code = -1;
+		try {
+			code = st.executeUpdate();
+			st.close();
+			dbcm.freeCon(con);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return code;
 	}
 
 	private List<T> changeResultSetToEntity(ResultSet rs, Class<T> destClass) throws SQLException {

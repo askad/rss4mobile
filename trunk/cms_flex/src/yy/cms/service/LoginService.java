@@ -45,7 +45,6 @@ public class LoginService {
 
 	private void initUser(FlexSession session, UserInfoEntity userInfoEntity) {
 		session.setAttribute(Commons.USERNAME, userInfoEntity.getUsername());
-		session.setAttribute(Commons.USERID, userInfoEntity.getUserid());
 		session.setAttribute(Commons.CURRENTPAGEID, "S001");
 		session.setAttribute(Commons.NEXTPAGEID, "S001");
 	}

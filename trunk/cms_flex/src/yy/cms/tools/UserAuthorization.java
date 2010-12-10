@@ -16,4 +16,8 @@ public class UserAuthorization {
 
         return null;
     }
+    
+    public static String encrptPass(String pass){
+    	return pass;
+    }
 }

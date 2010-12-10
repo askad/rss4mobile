@@ -34,5 +34,9 @@ public class Commons {
 
 	//
 	public final static String SCREENNAME_PROPERTY_PATH = "C:/yyang/MyProject/FlexWorkspace/CMS_Flex/WebRoot/configs/screen_name.property";
+	
+	public final static String UPLOAD_TEMP_PATH = "C:/yyang/uptemp/";
+	
+	public final static String LOG_PATH = "C:/yyang/uptemp/";
 
 }
