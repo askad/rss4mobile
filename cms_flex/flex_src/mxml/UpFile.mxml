@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+	layout="vertical" verticalAlign="middle" horizontalAlign="center">
+	<mx:Style>
+		global {
+			fontSize : 12;
+		}
+	</mx:Style>	
+	<mx:Script>
+		<![CDATA[
+		
+			import mx.rpc.events.ResultEvent;
+			import mx.rpc.remoting.RemoteObject;
+			// 先搞 1 个 FileReference
+			private var file:FileReference = new FileReference();
+			private var _service:RemoteObject;
+			// 上传状态指示, 和下面的文本框绑定
+			[Bindable]
+			private var stateText:String = "请选择一个文件上传";
+			
+           //定义过滤器 
+            private var htmlFilter:FileFilter = new FileFilter("HTML(*.html;*.htm;)", "*.html;*.htm;"); 
+            private var allFilter:FileFilter = new FileFilter("All(*)", "*.*"); 
+			private var FileMaxSize:int = 10 * 1024 * 1024;
+			
+			// createChildren 比 creationComplete 事件更早发生, 省的注册事件侦听, 直接在这里写了
+			protected override function createChildren():void {
+				super.createChildren();
+				file.addEventListener(Event.SELECT, fileSelect);
+				file.addEventListener(Event.COMPLETE, fileComplete);
+				file.addEventListener(ProgressEvent.PROGRESS, fileProgress);
+			}
+			
+			// 选择 1 个文件的事件
+			private function fileSelect (e:Event):void {
+				stateText = "选择了文件 " + file.name;
+			}
+			
+			// 上传完毕后的事件
+			private function fileComplete (e:Event):void {
+				checkFile(file.name);
+			}
+			
+			private function fileProgress (e:ProgressEvent):void {
+				stateText = "已上传 " + Math.round(100 * e.bytesLoaded / e.bytesTotal) + "%";
+			}
+			// 先判断一下文件大小, 再上传, FileService.aspx 就是上传地址
+			private function upload ():void {
+				if(file.size > FileMaxSize){
+					stateText = "文件不能超过10M!";
+					return;
+				}
+				if(file.size <= 0){
+					stateText = "文件为空！";
+					return;
+				}
+				stateText = "正在上传 " + file.name;
+				var request:URLRequest = new URLRequest("FileUploaded");
+				file.upload(request);
+			}
+			private function checkFile(fileName:String):void{
+				_service = new RemoteObject();
+				_service.destination = "UploadCtrlService";
+				_service.addEventListener(ResultEvent.RESULT, handleResult);
+				_service.isExistFile(fileName);
+			}
+			
+			private function handleResult(e:ResultEvent):void{
+				var flag:Boolean = e.result;
+				if(flag){
+					stateText = "上传完毕";
+				}else{
+					stateText = "上传失败";
+				}
+				
+			}
+			private function browerFile():void{
+				var acFilter:Array = new Array(); 
+				acFilter.push(htmlFilter); 
+				acFilter.push(allFilter);
+				file.browse(acFilter);
+			}
+		]]>
+	</mx:Script>
+	<mx:Panel width="250" height="112" layout="vertical" title="上传(文件不能超过10M)"
+		verticalAlign="middle" horizontalAlign="center" >
+		<mx:HBox>
+			<mx:TextInput text="{stateText}" width="160" editable="false"/>
+			<mx:Button label="浏览" click="browerFile();"/>
+		</mx:HBox>
+		<mx:HBox>
+			<mx:Button label="上传" click="upload();"/>
+		</mx:HBox>
+	</mx:Panel>
+</mx:Application>
