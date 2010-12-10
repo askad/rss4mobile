@@ -1,6 +1,8 @@
 package yy.cms.base;
 
 import java.sql.PreparedStatement;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,18 +17,21 @@ public abstract class BaseDAO<T extends BaseEntity> {
 	private static Logger logger = Logger.getLogger(LoginService.class);
 
 	// SQL AREA
-	private final static String SELECT = "select * from ";
+	private final static String SELECT = "SELECT * FROM ";
+	private final static String WHERE = " WHERE 1=1 ";
 
-	private final static String WHERE = " where 1=1 ";
+	private final static String AND = " AND ";
+	private final static String UPDATA = "UPDATA ";
 
+	private final static String INSERT = "INSERT INTO ";
 	private final static String PLACEHOLDER = " = ? ";
 
-	private final static String AND = " and ";
+	private final static String DELETE = "DELETE * FROM ";
 
 	// 
 	private String tableName;
 
-	private BaseDBConnection<T> con;
+	protected BaseDBConnection<T> con;
 
 	private Class<T> entityClass;
 
@@ -67,10 +72,43 @@ public abstract class BaseDAO<T extends BaseEntity> {
 		sbsql.append(tableName);
 		sbsql.append(getConditationSql(names));
 		String sql = sbsql.toString();
-		
+
 		logger.info("SQL:" + sql);
-		
+
 		return con.getPreparedStatement(sql);
+	}
+
+	protected PreparedStatement getPreparedStatementForUpdata(BaseEntity entity, String[] names) {
+		StringBuilder sbsql = new StringBuilder(UPDATA);
+		sbsql.append(tableName);
+		sbsql.append(entity.getUpdataString());
+		sbsql.append(getConditationSql(names));
+		String sql = sbsql.toString();
+		logger.info("SQL:" + sql);
+		return con.getPreparedStatement(sql);
+	}
+
+	protected PreparedStatement getPreparedStatementForInsert(BaseEntity entity) {
+		entity.setUpdTime(new Timestamp(new Date().getTime()));
+		StringBuilder sbsql = new StringBuilder(INSERT);
+		sbsql.append(tableName);
+		sbsql.append(entity.getInsertSql());
+		String sql = sbsql.toString();
+		logger.info("SQL:" + sql);
+		return con.getPreparedStatement(sql);
+	}
+
+	protected PreparedStatement getPreparedStatementForDelete(BaseEntity entity, String[] names) {
+		StringBuilder sbsql = new StringBuilder(DELETE);
+		sbsql.append(tableName);
+		sbsql.append(getConditationSql(names));
+		String sql = sbsql.toString();
+		logger.info("SQL:" + sql);
+		return con.getPreparedStatement(sql);
+	}
+
+	protected int runExecSql() {
+		return con.execUpdSql();
 	}
 
 	protected void setTableName(Class<T> cl) {

@@ -25,4 +25,32 @@ public class UserInfoDAO extends BaseDAO<UserInfoEntity> {
 		}
 		return getEntity(pst);
 	}
+
+	public int updateUserInfo(UserInfoEntity userInfoEntity) {
+		PreparedStatement pst = getPreparedStatementForUpdata(userInfoEntity, new String[] { UserInfoEntity.USERNAME });
+
+		int i = userInfoEntity.setUpdataFiled(pst, 1);
+		try {
+			pst.setString(i, userInfoEntity.getUsername());
+		} catch (SQLException e) {
+			logger.error(e.toString());
+		}
+		return runExecSql();
+	}
+
+	public int insertUserInfo(UserInfoEntity userInfoEntity) {
+		PreparedStatement pst = getPreparedStatementForInsert(userInfoEntity);
+		userInfoEntity.setInsertFiled(pst);
+		return runExecSql();
+	}
+
+	public int deleteUserInfo(UserInfoEntity userInfoEntity) {
+		PreparedStatement pst = getPreparedStatementForDelete(userInfoEntity, new String[] { UserInfoEntity.USERNAME });
+		try {
+			pst.setString(1, userInfoEntity.getUsername());
+		} catch (SQLException e) {
+			logger.error(e.toString());
+		}
+		return runExecSql();
+	}
 }
