@@ -22,4 +22,9 @@
 			<source>yy.cms.service.CommonService</source>
 		</properties>
 	</destination>
+	<destination id="UploadCtrlService"> 
+		<properties>
+			<source>yy.cms.service.UpFileCtrlService</source>
+		</properties>
+	</destination>
 </service>

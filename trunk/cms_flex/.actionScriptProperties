@@ -11,11 +11,13 @@
     <sourceAttachmentPath/>
   </compiler>
   <applications>
+    <application path="Search.mxml"/>
+    <application path="S001.mxml"/>
     <application path="Add.mxml"/>
     <application path="login.mxml"/>
-    <application path="Search.mxml"/>
-    <application path="Index.mxml"/>
-    <application path="Main.mxml"/>
+    <application path="S001Main.mxml"/>
+    <application path="error.mxml"/>
+    <application path="UpFile.mxml"/>
   </applications>
   <modules/>
   <buildCSSFiles/>
