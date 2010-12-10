@@ -1,0 +1,52 @@
+   1. <?xml version="1.0" encoding="utf-8"?>  
+   2. <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">  
+   3. <mx:TextArea x="10" y="32" width="436" height="253" id="t1"/>  
+   4. <mx:Button x="145" y="306" label="Click" width="166" height="42" id="btn" click="alertDemo(event);"/>  
+   5. <mx:Label x="10" y="6" text="验证Alert的用法:" width="226" id="l1" fontFamily="宋体" fontSize="16" color="#06D274" fontWeight="bold"/>  
+   6. <mx:Script>  
+   7.    <![CDATA[  
+   8.     import mx.events.CloseEvent;  
+   9.     import mx.controls.Alert;  
+  10.     import flash.events.MouseEvent;  
+  11.     private function alertDemo(evt:MouseEvent):void{  
+  12.       
+  13.      Alert.okLabel="确定";  
+  14.      Alert.cancelLabel="取消";  
+  15.      Alert.show("你真的要删除吗？删除将不能回复！","删除确认",Alert.OK|Alert.CANCEL,this,myClick,null,Alert.CANCEL);  
+  16.            
+  17.      }  
+  18.       private function myClick(evt:CloseEvent):void{  
+  19.       if(evt.detail==Alert.OK){  
+  20.          t1.text+= getTimer() + ":你点了确认按钮\n";  
+  21.       }  
+  22.       if(evt.detail==Alert.CANCEL){  
+  23.          t1.text+= getTimer() + ":你点了取消按钮\n";  
+  24.       }  
+  25.       }    
+  26.      
+  27.    ]]>  
+  28. </mx:Script>  
+  29. <mx:Style>  
+  30.       Alert{  
+  31.            messageStyleName:alertMessage;  
+  32.            titleStyleName:alertTitle;  
+  33.            buttonStyleName:alertButton;  
+  34.       }  
+  35.    .alertMessage{  
+  36.     fontSize:12px;  
+  37.     fontFamily:宋体;  
+  38.     color:#06D274;  
+  39.     fontWeight:bold;  
+  40.    }  
+  41.    .alertTitle{  
+  42.     fontSize:16px;  
+  43.     fontFamily:宋体;  
+  44.     color:#FF0000;  
+  45.    }  
+  46.    .alertButton{  
+  47.     fontSize:16px;  
+  48.     color:#f10c58;  
+  49.     /*fontFamily:宋体;*/  
+  50.    }  
+  51. </mx:Style>  
+  52. </mx:Application>  
