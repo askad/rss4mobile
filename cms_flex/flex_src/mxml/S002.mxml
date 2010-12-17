@@ -3,6 +3,11 @@
 	xmlns:view="*">
 <mx:Script source="/as3/commonscript.as"/>
 <mx:Script source="/as3/yy/cms/script/S002.as"/>
+<mx:Script>
+	<![CDATA[
+		//this.InitComponent();
+	]]>
+</mx:Script>
 	<mx:List click=";" id="users" height="296"
 		labelField="name" dataProvider="{this.userList}"
 		alpha="0.5" width="200" paddingRight="2" paddingLeft="2" y="31" x="39"/>
