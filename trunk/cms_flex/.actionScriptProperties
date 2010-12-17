@@ -12,12 +12,13 @@
   </compiler>
   <applications>
     <application path="Search.mxml"/>
+    <application path="S002.mxml"/>
     <application path="S001.mxml"/>
+    <application path="UpFile.mxml"/>
     <application path="Add.mxml"/>
     <application path="login.mxml"/>
     <application path="S001Main.mxml"/>
     <application path="error.mxml"/>
-    <application path="UpFile.mxml"/>
   </applications>
   <modules/>
   <buildCSSFiles/>
