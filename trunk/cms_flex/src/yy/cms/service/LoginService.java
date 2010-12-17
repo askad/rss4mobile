@@ -35,7 +35,7 @@ public class LoginService {
 				&& userInfoEntity.getUserpass().equals(psword)) {
 			initUser(session, userInfoEntity);
 			loginPage.setUname(usname);
-			logger.info(usname + " sucess");
+			logger.info(usname + " login sucess");
 		} else {
 			logger.error(Validator.getIpAddr() + "login failed");
 			loginPage.setErrorMsg(MessageContainer.getErrorMsg(lang, Commons.ER_B0001));

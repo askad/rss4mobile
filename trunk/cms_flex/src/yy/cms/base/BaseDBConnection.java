@@ -68,31 +68,42 @@ public class BaseDBConnection<T> {
 			while (rs.next()) {
 				ResultSetMetaData metaData = rs.getMetaData();
 				int columnCount = metaData.getColumnCount();
+				T entity = destClass.newInstance();
 				for (int i = 0; i < columnCount; i++) {
-					T entity = destClass.newInstance();
-
 					String fieldName = metaData.getColumnName(i + 1).toLowerCase();
 					int columnType = metaData.getColumnType(i + 1);
 
 					// get entity field
-					Field fieldObject = destClass.getDeclaredField(fieldName);
+					Field fieldObject = getFieldRecursive(destClass, fieldName);
+					System.out.println(fieldName);
 					fieldObject.setAccessible(true);
+					
 					fieldObject.set(entity, getValueFromType(rs, fieldName, columnType));
-
-					rslist.add(entity);
 				}
-
+				rslist.add(entity);
 			}
+			return rslist;
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (SecurityException e) {
 			e.printStackTrace();
-		} catch (NoSuchFieldException e) {
-			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private Field getFieldRecursive(Class c, String fieldName) throws SecurityException {
+
+		try {
+			return c.getDeclaredField(fieldName);
+		} catch (NoSuchFieldException e) {
+			Class superc = c.getSuperclass();
+			if (superc != null) {
+				return getFieldRecursive(superc, fieldName);
+			}
 		}
 		return null;
 	}
@@ -116,6 +127,9 @@ public class BaseDBConnection<T> {
 
 		case Types.DATE:
 			return rs.getDate(fieldName);
+
+		case Types.INTEGER:
+			return rs.getInt(fieldName);
 
 		default:
 			return rs.getString(fieldName);

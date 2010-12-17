@@ -31,8 +31,8 @@ public class ControlServlet extends HttpServlet {
 		
 		HttpSession session = req.getSession();
 		// session validate
-		String userId = (String) session.getAttribute(Commons.USERID);
-		if (userId == null || userId.equals(Commons.BLANK)) {
+		String userName = (String) session.getAttribute(Commons.USERNAME);
+		if (userName == null || userName.equals(Commons.BLANK)) {
 			PageDispatcher.dispatcherLogin(req, resp);
 			return;
 		}

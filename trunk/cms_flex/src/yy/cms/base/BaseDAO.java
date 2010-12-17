@@ -27,6 +27,9 @@ public abstract class BaseDAO<T extends BaseEntity> {
 	private final static String PLACEHOLDER = " = ? ";
 
 	private final static String DELETE = "DELETE * FROM ";
+	
+	public final static String DEFAULT_ORDER = " ORDER BY ID";
+
 
 	// 
 	private String tableName;
@@ -34,16 +37,18 @@ public abstract class BaseDAO<T extends BaseEntity> {
 	protected BaseDBConnection<T> con;
 
 	private Class<T> entityClass;
-
+	protected String getOrderSql(){
+		return DEFAULT_ORDER;
+	}
 	public BaseDAO() {
 		con = new BaseDBConnection<T>();
 	}
 
-	public List<T> getAllEntity(PreparedStatement pst) {
+	protected List<T> getAllEntity(PreparedStatement pst) {
 		return execSelectSql(pst);
 	}
 
-	public T getEntity(PreparedStatement pst) {
+	protected T getEntity(PreparedStatement pst) {
 		List<T> results = execSelectSql(pst);
 		if (results != null && results.size() > 0) {
 			return results.get(0);
@@ -71,6 +76,7 @@ public abstract class BaseDAO<T extends BaseEntity> {
 		StringBuilder sbsql = new StringBuilder(SELECT);
 		sbsql.append(tableName);
 		sbsql.append(getConditationSql(names));
+		sbsql.append(getOrderSql());
 		String sql = sbsql.toString();
 
 		logger.info("SQL:" + sql);
@@ -89,7 +95,7 @@ public abstract class BaseDAO<T extends BaseEntity> {
 	}
 
 	protected PreparedStatement getPreparedStatementForInsert(BaseEntity entity) {
-		entity.setUpdTime(new Timestamp(new Date().getTime()));
+		entity.setUpdtime(new Timestamp(new Date().getTime()));
 		StringBuilder sbsql = new StringBuilder(INSERT);
 		sbsql.append(tableName);
 		sbsql.append(entity.getInsertSql());

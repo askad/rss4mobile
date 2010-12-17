@@ -5,7 +5,6 @@ public class Commons {
 	public final static String ENG = "eng";
 	
 	public final static String BLANK = "";
-
 	// set Page in request attribute
 	public final static String CURRENTPAGE = "CURRENTPAGE";
 	public final static String CURRENTPAGEID = "CURRENTPAGEID";
@@ -15,7 +14,7 @@ public class Commons {
 	// Session
 	public final static String LANGUAGE = "language";
 	public final static String USERNAME = "username";
-	public final static String USERID = "userid";
+	//public final static String USERID = "userid";
 
 	// Message Container
 	public static String[] LANGUAGES = { CHN, ENG };
