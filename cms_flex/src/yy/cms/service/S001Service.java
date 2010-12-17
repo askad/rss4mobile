@@ -5,36 +5,33 @@ import java.util.List;
 
 import yy.cms.base.BasePage;
 import yy.cms.base.BaseService;
+import yy.cms.dao.MenuDAO;
+import yy.cms.entity.MenuEntity;
 import yy.cms.pages.S001Page;
-import yy.cms.pages.S002Page;
-import yy.cms.tools.Commons;
-import yy.cms.vo.ItemBean;
-import flex.messaging.FlexSession;
 
 public class S001Service extends BaseService {
 
 	private S001Page currentPage = null;
-
-	private S002Page nextPage = null;
+	private MenuDAO menuDAO;
 
 	@Override
 	public BasePage doInit() {
 
 		currentPage = new S001Page();
+		menuDAO = new MenuDAO();
 		List<String> menunameList = new ArrayList<String>();
-		menunameList.add("Home");
-		menunameList.add("Add");
-		menunameList.add("Search");
-		currentPage.setMenunameList(menunameList);
-		
 		List<String> menuvalueList = new ArrayList<String>();
-		menuvalueList.add("S001Main.swf");
-		menuvalueList.add("Add.swf");
-		menuvalueList.add("Search.swf");
+		List<MenuEntity> menuList = menuDAO.getAllMenu();
+			if (menuList != null && menuList.size() > 0) {
+			for (MenuEntity menuEntity : menuList) {
+				menunameList.add(menuEntity.getMenuname());
+				menuvalueList.add(menuEntity.getMenulink());
+			}
+		}
+
+		currentPage.setMenunameList(menunameList);
 		currentPage.setMenuvalueList(menuvalueList);
 
-		FlexSession session = getSession();
-		session.setAttribute(Commons.NEXTPAGEID, "S002");
 		return currentPage;
 	}
 
@@ -46,9 +43,9 @@ public class S001Service extends BaseService {
 
 	@Override
 	public void doBussiness(BasePage currentPage) {
-		// nextPage
-		FlexSession session = getSession();
-		// BasePage nextPage
-		session.setAttribute(Commons.CURRENTPAGEID, "S002");
+//		// nextPage
+//		FlexSession session = getSession();
+//		// BasePage nextPage
+//		session.setAttribute(Commons.CURRENTPAGEID, "S002");
 	}
 }

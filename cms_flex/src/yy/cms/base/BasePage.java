@@ -3,6 +3,7 @@ package yy.cms.base;
 import yy.cms.tools.Commons;
 
 public abstract class BasePage {
+	
 	private String errorMsg = Commons.BLANK;
 
 	private String inforMsg = Commons.BLANK;
@@ -42,5 +43,4 @@ public abstract class BasePage {
 	public void setPageName(String pageName) {
 		this.pageName = pageName;
 	}
-
 }

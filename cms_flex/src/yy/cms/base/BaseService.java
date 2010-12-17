@@ -22,7 +22,7 @@ public abstract class BaseService implements BaseValidator {
 
 		FlexSession session = getSession();
 		// session validate
-		String userId = (String) session.getAttribute(Commons.USERID);
+		String userId = (String) session.getAttribute(Commons.USERNAME);
 		if (userId == null || userId.equals(Commons.BLANK)) {
 			return false;
 		}

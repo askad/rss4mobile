@@ -13,7 +13,7 @@ public class LogoutService {
 	public void onLogout() {
 
 		FlexSession session = FlexContext.getFlexSession();
-		logger.info(session.getAttribute(Commons.USERID) + ":log out");
-		session.setAttribute(Commons.USERID, null);
+		logger.info(session.getAttribute(Commons.USERNAME) + ":log out");
+		session.setAttribute(Commons.USERNAME, null);
 	}
 }
