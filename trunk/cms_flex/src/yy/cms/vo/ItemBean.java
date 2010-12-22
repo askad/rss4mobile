@@ -1,14 +1,20 @@
 package yy.cms.vo;
 
-public class ItemBean {
+import yy.cms.tools.Commons;
+
+public class ItemBean  {
 
 	public String name;
-
 	public String value;
 
 	public ItemBean(String name, String value) {
 		this.name = name;
 		this.value = value;
+	}
+	
+	public ItemBean() {
+		this.name = Commons.BLANK;
+		this.value = Commons.BLANK;
 	}
 
 	public String getName() {

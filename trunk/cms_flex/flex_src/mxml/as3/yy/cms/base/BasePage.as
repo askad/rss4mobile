@@ -8,7 +8,6 @@ package as3.yy.cms.base
 		public var errorMsg:String;
 		public var inforMsg:String;
 		public var pageName:String;
-		public var usrId:String;
 		public var isAuthorized:Boolean;
 
 		// can't instance this
@@ -57,5 +56,8 @@ package as3.yy.cms.base
 		{
 			return isAuthorized;
 		}
+//		public function toString():String{
+//			return this.toString();
+//		}
 	}
 }

@@ -6,7 +6,8 @@ package as3.yy.cms.pages
 	[RemoteClass(alias="yy.cms.pages.S002Page")]
 	public class S002Page extends BasePage
 	{
-		public var menuList:ArrayCollection;
+		public var userList:ArrayCollection;
+		public var authList:ArrayCollection;
 		public function S002Page()
 		{
 			super(this);

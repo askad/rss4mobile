@@ -1,4 +1,6 @@
 import as3.yy.cms.tools.Commons;
+import as3.yy.cms.tools.TypeDescriptor;
+import as3.yy.cms.tools.TypeDescription;
 
 import mx.controls.Alert;
 import mx.rpc.events.ResultEvent;
@@ -33,6 +35,15 @@ private function doProcess(destination:String,func:Function):void{
 }
 private function errorShow(item:Object,msg:String):void{
 	Alert.show(msg, Commons.WARNING);
-	item.setStyle("borderColor","red");
-	item.setFocus();
+	if(item != null){
+		item.setStyle("borderColor","red");
+		item.setFocus();
+	}
+}
+private function changeResultFromRemote(desc:Object,remoteObject:Object):Object{
+	var td:TypeDescription = TypeDescriptor.describeType(desc);
+	for(var name:String in td.properties){
+		desc[name] = remoteObject[name];
+	}
+	return desc;
 }

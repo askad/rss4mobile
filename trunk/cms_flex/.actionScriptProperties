@@ -17,8 +17,8 @@
     <application path="UpFile.mxml"/>
     <application path="Add.mxml"/>
     <application path="login.mxml"/>
-    <application path="S001Main.mxml"/>
     <application path="error.mxml"/>
+    <application path="S000.mxml"/>
   </applications>
   <modules/>
   <buildCSSFiles/>
