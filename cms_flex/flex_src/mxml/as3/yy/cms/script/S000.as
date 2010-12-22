@@ -1,4 +1,4 @@
-import as3.yy.cms.pages.S001Page;
+import as3.yy.cms.pages.S000Page;
 import as3.yy.cms.vo.ItemBean;
 
 import mx.collections.ArrayCollection;
@@ -7,24 +7,27 @@ private var nowDate:String = new Date().toDateString();
 [Bindable]
 private var menuList:ArrayCollection;
 private function InitComponent():void{
-	doInit("S001Service",handleResult);
+	doInit("S000Service",handleResult);
 }
 private function handleResult(e:ResultEvent):void{
-	if (e.result is S001Page)
+	if (e.result is S000Page)
 	{
-		var s001Page:S001Page = e.result as S001Page;
-		initMenu(s001Page);
+		var s000Page:S000Page = e.result as S000Page;
+		initMenu(s000Page);
 	}else{
 		logout();
 	}
 }
-private function initMenu(s001Page:S001Page):void{
-	var nameList:ArrayCollection = s001Page.menunameList;
-	var valueList:ArrayCollection = s001Page.menuvalueList;
+private function initMenu(s000Page:S000Page):void{
+	var nameList:ArrayCollection = s000Page.menunameList;
+	var valueList:ArrayCollection = s000Page.menuvalueList;
 	var count:int = 0;
 	menuList = new ArrayCollection();
 	for each(var name:String in nameList){
-		menuList.addItem(new ItemBean(name,valueList.getItemAt(count).toString()));
+		var it:ItemBean = new ItemBean();
+		it.name = name;
+		it.value = valueList.getItemAt(count).toString();
+		menuList.addItem(it);
 		count++;
 	}
 }

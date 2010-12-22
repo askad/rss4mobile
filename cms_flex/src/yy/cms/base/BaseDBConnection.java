@@ -75,7 +75,6 @@ public class BaseDBConnection<T> {
 
 					// get entity field
 					Field fieldObject = getFieldRecursive(destClass, fieldName);
-					System.out.println(fieldName);
 					fieldObject.setAccessible(true);
 					
 					fieldObject.set(entity, getValueFromType(rs, fieldName, columnType));

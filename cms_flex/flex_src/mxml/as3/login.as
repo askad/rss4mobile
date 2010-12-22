@@ -51,7 +51,7 @@ private function checkUser(e:ResultEvent):void
 			var request:URLRequest=new URLRequest(url);
 			var variables:URLVariables = new URLVariables();
 	        variables.CURRENTPAGEID = "Login";
-	        variables.NEXTPAGEID = "S001";
+	        variables.NEXTPAGEID = "S000";
 			request.data = variables;
 	        request.method = URLRequestMethod.POST;
 			navigateToURL(request, "_top");

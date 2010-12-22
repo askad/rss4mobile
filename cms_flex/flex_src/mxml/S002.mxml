@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
-	xmlns:view="*">
-<mx:Script source="/as3/commonscript.as"/>
+	xmlns:view="*" creationComplete="InitComponent();">
+<mx:Panel xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="100%" height="100%">
 <mx:Script source="/as3/yy/cms/script/S002.as"/>
-<mx:Script>
-	<![CDATA[
-		//this.InitComponent();
-	]]>
-</mx:Script>
-	<mx:List click=";" id="users" height="296"
+	<mx:List click=";" id="users" height="354"
 		labelField="name" dataProvider="{this.userList}"
-		alpha="0.5" width="200" paddingRight="2" paddingLeft="2" y="31" x="39"/>
+		alpha="0.5" width="24%" paddingRight="2" paddingLeft="2" y="179" x="123"/>
+	<mx:ComboBox color="black" dataProvider="{this.authList}" labelField="name" x="490" y="180" width="24%" height="30"></mx:ComboBox>
+	<mx:Button x="490" y="313" label="Button"/>
+	<mx:TextArea x="140" y="46" width="226" id="errorT" height="108"/>
+</mx:Panel>
 </mx:Application>

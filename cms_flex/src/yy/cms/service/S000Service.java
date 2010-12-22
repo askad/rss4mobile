@@ -7,17 +7,17 @@ import yy.cms.base.BasePage;
 import yy.cms.base.BaseService;
 import yy.cms.dao.MenuDAO;
 import yy.cms.entity.MenuEntity;
-import yy.cms.pages.S001Page;
+import yy.cms.pages.S000Page;
 
-public class S001Service extends BaseService {
+public class S000Service extends BaseService {
 
-	private S001Page currentPage = null;
+	private S000Page currentPage = null;
 	private MenuDAO menuDAO;
 
 	@Override
 	public BasePage doInit() {
 
-		currentPage = new S001Page();
+		currentPage = new S000Page();
 		menuDAO = new MenuDAO();
 		List<String> menunameList = new ArrayList<String>();
 		List<String> menuvalueList = new ArrayList<String>();
