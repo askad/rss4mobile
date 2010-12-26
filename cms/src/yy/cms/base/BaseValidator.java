@@ -1,6 +1,6 @@
 package yy.cms.base;
 
 public interface BaseValidator {
-    void unitCheck();//for must input,date format....
-    void businessCheck();//for special check
+    void unitCheck(BasePage currentPage);//for must input,date format....
+    void businessCheck(BasePage currentPage);//for special check
 }

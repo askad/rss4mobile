@@ -3,10 +3,15 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" output="work" path="work"/>
-	<classpathentry kind="var" path="TOMCAT_HOME/lib/servlet-api.jar"/>
-	<classpathentry kind="var" path="TOMCAT_HOME/lib/jasper.jar"/>
-	<classpathentry kind="var" path="TOMCAT_HOME/lib/jsp-api.jar"/>
-	<classpathentry kind="var" path="TOMCAT_HOME/lib/el-api.jar"/>
-	<classpathentry kind="var" path="TOMCAT_HOME/lib/annotations-api.jar"/>
+	<classpathentry kind="var" path="TOMCAT_HOME"/>
+	<classpathentry kind="lib" path="D:/develop/webserver/Tomcat 5.5/common/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="D:/develop/webserver/Tomcat 5.5/common/lib/jasper-compiler.jar"/>
+	<classpathentry kind="lib" path="D:/develop/webserver/Tomcat 5.5/common/lib/jasper-runtime.jar"/>
+	<classpathentry kind="lib" path="D:/develop/webserver/Tomcat 5.5/common/lib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="War/WEB-INF/lib/commons-fileupload-1.2.2.jar"/>
+	<classpathentry kind="lib" path="War/WEB-INF/lib/commons-io-2.0.jar"/>
+	<classpathentry kind="lib" path="War/WEB-INF/lib/commons-logging.jar"/>
+	<classpathentry kind="lib" path="War/WEB-INF/lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="War/WEB-INF/lib/mysql-connector-java-5.1.14-bin.jar"/>
 	<classpathentry kind="output" path="War/WEB-INF/classes"/>
 </classpath>

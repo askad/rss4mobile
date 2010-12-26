@@ -16,28 +16,28 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/login.css" />
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/login.js"></script>
 </head>
-<body>
+<body style="background:#FFFFFF;">
 <form action="<%=request.getContextPath()%>/login" method="post">
 <div id="container">
 <div class="loginplan_bg">
     <div class="loginplan">
-        <div class="loginname">登录您的XX</div>
+        <div class="loginname">登录您的账户</div>
         <div style="margin: 5px 0pt; padding: 4px 0pt 0pt 2px;">
          <div id="errMsgContainer">
          <%=(localPage != null?localPage.getErrorMsg():Commons.BLANK)%>
          </div>
         </div>
         <div style="height: 25px;">
-            <label><%=descriptor.get(lang, SCREENNAME, "unameLabel")%></label>
+            <label>用户名：</label>
             <input type="text" style="ime-mode: disabled;" tabindex="1" value="" name="uname" id="uname"/>
             <div style="margin: 0pt 0pt 0pt 4px; font-family: Arial; font-style: normal; font-variant: normal; font-weight: bold; font-size: 13px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none; float: left;"></div>
         </div>
          <div style="margin: 8px 0pt 0pt; height: 25px; clear: left;">
-            <label><%=descriptor.get(lang, SCREENNAME, "pwordLabel")%></label>
+            <label>密　码：</label>
             <input type="password" class="text" tabindex="2" value="" name="pword" id="pword"/>
          </div>
          <div style="padding: 12px 0pt 0pt 60px; clear: both; height: 27px ! important;">
-            <input type="submit" tabindex="4" name="btlogin" id="btlogin" value="<%=descriptor.get(lang, SCREENNAME, "btloginLabel")%>" style="font-family: Verdana; font-style: normal; font-variant: normal; font-weight: bold; font-size: 12px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none; padding-top: 2px ! important;"/>
+            <input type="submit" tabindex="4" name="btlogin" id="btlogin" value="登录" style="font-family: Verdana; font-style: normal; font-variant: normal; font-weight: bold; font-size: 12px; line-height: normal; font-size-adjust: none; font-stretch: normal; -x-system-font: none; padding-top: 2px ! important;"/>
          </div>
     </div>
 </div>
