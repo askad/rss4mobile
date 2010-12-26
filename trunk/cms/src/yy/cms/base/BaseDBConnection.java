@@ -2,7 +2,6 @@ package yy.cms.base;
 
 import java.lang.reflect.Field;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -11,27 +10,26 @@ import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
+import yy.cms.tools.DBConnectionManger;
+
 public class BaseDBConnection<T> {
 	private Connection con;
 
 	private PreparedStatement st;
+	private DBConnectionManger dbcm;
 
-	private String dri = "oracle.jdbc.driver.OracleDriver";
-
-	private String cons = "jdbc:oracle:thin:@20.193.27.67:1521:orcl";
-
-	private String dbUserName = "vm1dta";
-
-	private String dbUserPass = "vm1dta12#$";
+	public BaseDBConnection() {
+		dbcm = DBConnectionManger.getInstance();
+		con = dbcm.getCon();
+	}
 
 	public PreparedStatement getPreparedStatement(String sql) {
 		try {
-			Class.forName(dri);
-			con = DriverManager.getConnection(cons, dbUserName, dbUserPass);
+			if (con == null || con.isClosed()) {
+				con = dbcm.getCon();
+			}
 			st = con.prepareStatement(sql);
 			return st;
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -44,11 +42,23 @@ public class BaseDBConnection<T> {
 			ResultSet rs = st.executeQuery();
 			list = changeResultSetToEntity(rs, destClass);
 			st.close();
-			con.close();
+			dbcm.freeCon(con);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	public int execUpdSql() {
+		int code = -1;
+		try {
+			code = st.executeUpdate();
+			st.close();
+			dbcm.freeCon(con);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return code;
 	}
 
 	private List<T> changeResultSetToEntity(ResultSet rs, Class<T> destClass) throws SQLException {
@@ -58,31 +68,41 @@ public class BaseDBConnection<T> {
 			while (rs.next()) {
 				ResultSetMetaData metaData = rs.getMetaData();
 				int columnCount = metaData.getColumnCount();
+				T entity = destClass.newInstance();
 				for (int i = 0; i < columnCount; i++) {
-					T entity = destClass.newInstance();
-
 					String fieldName = metaData.getColumnName(i + 1).toLowerCase();
 					int columnType = metaData.getColumnType(i + 1);
 
 					// get entity field
-					Field fieldObject = destClass.getDeclaredField(fieldName);
+					Field fieldObject = getFieldRecursive(destClass, fieldName);
 					fieldObject.setAccessible(true);
+					
 					fieldObject.set(entity, getValueFromType(rs, fieldName, columnType));
-
-					rslist.add(entity);
 				}
-
+				rslist.add(entity);
 			}
+			return rslist;
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (SecurityException e) {
 			e.printStackTrace();
-		} catch (NoSuchFieldException e) {
-			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
+		}
+		return null;
+	}
+
+	private Field getFieldRecursive(Class c, String fieldName) throws SecurityException {
+
+		try {
+			return c.getDeclaredField(fieldName);
+		} catch (NoSuchFieldException e) {
+			Class superc = c.getSuperclass();
+			if (superc != null) {
+				return getFieldRecursive(superc, fieldName);
+			}
 		}
 		return null;
 	}
@@ -106,6 +126,9 @@ public class BaseDBConnection<T> {
 
 		case Types.DATE:
 			return rs.getDate(fieldName);
+
+		case Types.INTEGER:
+			return rs.getInt(fieldName);
 
 		default:
 			return rs.getString(fieldName);

@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 public class PageDispatcher {
 
-	public final static String SCREENNAME_SUF = ".jsp";
+	public final static String SCREENNAME_SUF = ".html";
+	public final static String SCREENNAME_PRE = "/";
 
 	public static void dispatcherByPath(String path, HttpServletRequest req, HttpServletResponse resp) {
 		try {
@@ -33,7 +34,7 @@ public class PageDispatcher {
 	public static boolean dispatcherNext(ServletContext sc, String nextPageId, HttpServletRequest req,
 			HttpServletResponse resp) {
 
-		RequestDispatcher rd = sc.getRequestDispatcher(nextPageId + SCREENNAME_SUF);
+		RequestDispatcher rd = sc.getRequestDispatcher(SCREENNAME_PRE + nextPageId + SCREENNAME_SUF);
 		if (rd == null) {
 			return false;
 		}

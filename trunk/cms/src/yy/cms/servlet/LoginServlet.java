@@ -15,6 +15,7 @@ import yy.cms.tools.Commons;
 import yy.cms.tools.MessageContainer;
 import yy.cms.tools.PageDispatcher;
 import yy.cms.tools.PageParser;
+import yy.cms.tools.SessionObject;
 
 public class LoginServlet extends HttpServlet {
 
@@ -26,7 +27,15 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		LoginPage loginPage = (LoginPage) PageParser.getCurrentPageFromRequest(req, LoginPage.class);
-		req.setAttribute(Commons.CURRENTPAGE, loginPage);
+	    
+		// get default language
+		String lang = (String) req.getSession().getAttribute(Commons.LANGUAGE);
+		if (lang == null || lang.isEmpty()) {
+			lang = Commons.CHN;
+		}
+
+		userInfoDAO = new UserInfoDAO();
+		
 		UserInfoEntity userInfoEntity = userInfoDAO.getUserInfo(loginPage.getUname());
 
 		if (userInfoEntity != null && userInfoEntity.getUserpass() != null
@@ -34,16 +43,17 @@ public class LoginServlet extends HttpServlet {
 			initUser(req, userInfoEntity);
 			PageDispatcher.dispatcherByPath("/Pages/Main.jsp", req, resp);
 		} else {
-			loginPage.setErrorMsg(MessageContainer.getErrorMsg(req, Commons.ER_B0001));
+			loginPage.setErrorMsg(MessageContainer.getErrorMsg(lang, Commons.ER_B0001));
+			req.setAttribute(Commons.CURRENTPAGE, loginPage);
 			PageDispatcher.dispatcherLogin(req, resp);
 		}
 	}
 
 	private void initUser(HttpServletRequest req, UserInfoEntity userInfoEntity) {
 		HttpSession session = req.getSession();
-		session.setAttribute(Commons.USERNAME, userInfoEntity.getUsername());
-		session.setAttribute(Commons.USERID, userInfoEntity.getUserid());
-		session.setAttribute(Commons.NEXTPAGEID, "S001");
+		SessionObject so = new SessionObject();
+		so.setUsername(userInfoEntity.getUsername());
+		session.setAttribute(SessionObject.GLOBAL_SESSION, so);
 	}
 }
 /*
