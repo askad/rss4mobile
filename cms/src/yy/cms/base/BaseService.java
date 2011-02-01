@@ -1,8 +1,5 @@
 package yy.cms.base;
 
-import yy.cms.tools.Commons;
-import flex.messaging.FlexContext;
-import flex.messaging.FlexSession;
 
 public abstract class BaseService implements BaseValidator {
 
@@ -12,21 +9,6 @@ public abstract class BaseService implements BaseValidator {
 		businessCheck(currentPage);
 		doBussiness(currentPage);
 		return currentPage;
-	}
-
-	protected FlexSession getSession() {
-		return FlexContext.getFlexSession();
-	}
-
-	public boolean doAuthorize() {
-
-		FlexSession session = getSession();
-		// session validate
-		String userId = (String) session.getAttribute(Commons.USERNAME);
-		if (userId == null || userId.equals(Commons.BLANK)) {
-			return false;
-		}
-		return true;
 	}
 
 	public abstract BasePage doInit();
