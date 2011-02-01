@@ -17,9 +17,6 @@ public class CommonService {
 		serviceName = SERVICENAME_PRE + serviceName;
 		try {
 			BaseService baseService = (BaseService) Class.forName(serviceName).newInstance();
-			if(!baseService.doAuthorize()){
-				return null;
-			}
 			logger.info(serviceName);
 			return baseService.doInit();
 		} catch (ClassNotFoundException e) {
@@ -36,9 +33,6 @@ public class CommonService {
 		serviceName = SERVICENAME_PRE + serviceName;
 		try {
 			BaseService baseService = (BaseService) Class.forName(serviceName).newInstance();
-			if(!baseService.doAuthorize()){
-				return null;
-			}
 			logger.info(serviceName);
 			return baseService.doProcess(currentPage);
 		} catch (ClassNotFoundException e) {
