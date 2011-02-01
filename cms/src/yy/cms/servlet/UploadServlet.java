@@ -29,10 +29,9 @@ public class UploadServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		factory.setSizeThreshold(cacheSize);
-
 		ServletFileUpload servletFileUpload = new ServletFileUpload(factory);
 		servletFileUpload.setSizeMax(maxPostSize);
-		//servletFileUpload.setHeaderEncoding("utf-8");
+		// servletFileUpload.setHeaderEncoding("utf-8");
 
 		List files = null;
 
@@ -44,10 +43,17 @@ public class UploadServlet extends HttpServlet {
 				while (iter.hasNext()) {
 					FileItem item = (FileItem) iter.next();
 					if (!item.isFormField()) {
-						//String path=this.getServletContext().getRealPath("/upload")
-						// new FileReader(SystemConfig.getRealPath()+"WEB-INF/url.txt");
-						item.write(new File(Commons.UPLOAD_TEMP_PATH + item.getName()));
-						System.out.println(item.getName());
+						// String
+						// path=this.getServletContext().getRealPath("/upload")
+						// new
+						// FileReader(SystemConfig.getRealPath()+"WEB-INF/url.txt");
+						File file = new File(Commons.UPLOAD_TEMP_PATH + item.getName());
+						if (file.isFile()) {
+							System.out.println("pass");
+						} else {
+							item.write(file);
+							System.out.println(item.getName());
+						}
 					}
 				}
 			} catch (FileUploadException e) {

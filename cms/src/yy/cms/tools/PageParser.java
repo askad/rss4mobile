@@ -28,8 +28,10 @@ public class PageParser {
 			Field[] fields = c.getDeclaredFields();
 			for (Field f : fields) {
 				String value = req.getParameter(f.getName());
-				f.setAccessible(true);
-				f.set(page, value);
+				if (value != null) {
+					f.setAccessible(true);
+					f.set(page, value);
+				}
 			}
 		} catch (InstantiationException e) {
 			e.printStackTrace();
