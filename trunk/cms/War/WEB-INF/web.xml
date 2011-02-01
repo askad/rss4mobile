@@ -28,7 +28,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<servlet-name>ControlServlet</servlet-name>
 		<url-pattern>*.cmd</url-pattern>
 	</servlet-mapping>
-	
+	<servlet>    
+         <servlet-name>FileUploaded</servlet-name>    
+         <servlet-class>yy.cms.servlet.UploadServlet</servlet-class>    
+     </servlet>    
+     <servlet-mapping>    
+         <servlet-name>FileUploaded</servlet-name>    
+         <url-pattern>/FileUploaded</url-pattern>    
+     </servlet-mapping> 
 	<error-page>
 		<error-code>500</error-code>
 		<location>/Pages/error.jsp</location>
