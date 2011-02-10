@@ -18,6 +18,6 @@
 </style>
 <div id="userinfo">
   Welcome,Yy<br />
-logout</div>
+<a href="/logout">logout</a></div>
 <div class="logo">C M S</div>
 <hr/>
