@@ -41,12 +41,17 @@ public class LoginServlet extends HttpServlet {
 		if (userInfoEntity != null && userInfoEntity.getUserpass() != null
 				&& userInfoEntity.getUserpass().equals(loginPage.getPword())) {
 			initUser(req, userInfoEntity);
-			PageDispatcher.dispatcherByPath("/Pages/Main.jsp", req, resp);
+			PageDispatcher.dispatcherMain(req, resp);
 		} else {
 			loginPage.setErrorMsg(MessageContainer.getErrorMsg(lang, Commons.ER_B0001));
 			req.setAttribute(Commons.CURRENTPAGE, loginPage);
 			PageDispatcher.dispatcherLogin(req, resp);
 		}
+	}
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		PageDispatcher.dispatcherLogin(req, resp);
 	}
 
 	private void initUser(HttpServletRequest req, UserInfoEntity userInfoEntity) {
