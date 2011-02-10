@@ -23,6 +23,10 @@ public class PageDispatcher {
 		}
 	}
 
+	public static void dispatcherMain(HttpServletRequest req, HttpServletResponse resp) {
+		dispatcherByPath("/Pages/main.jsp", req, resp);
+	}
+	
 	public static void dispatcherLogin(HttpServletRequest req, HttpServletResponse resp) {
 		dispatcherByPath("/Pages/login.jsp", req, resp);
 	}
