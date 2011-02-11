@@ -15,11 +15,11 @@ public class ForbiddenServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		PageDispatcher.dispatcherByPath("/404.html", req, resp);
+		PageDispatcher.dispatcher(resp, "/404.html");
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		PageDispatcher.dispatcherByPath("/404.html", req, resp);
+		PageDispatcher.dispatcher(resp, "/404.html");
 	}
 }

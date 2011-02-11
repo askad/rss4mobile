@@ -1,6 +1,7 @@
 package yy.cms.tools;
 
 public class Commons {
+	
 	public final static String CHN = "chn";
 	public final static String ENG = "eng";
 	
@@ -14,8 +15,6 @@ public class Commons {
 	// Session
 	public final static String LANGUAGE = "language";
 	
-	//public final static String USERID = "userid";
-
 	// Message Container
 	public static String[] LANGUAGES = { CHN, ENG };
 
