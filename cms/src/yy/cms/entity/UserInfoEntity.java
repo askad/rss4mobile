@@ -17,13 +17,13 @@ public class UserInfoEntity extends BaseEntity {
 
 	private String username;
 	private String userpass;
-	private String authcode;
+	private int authcode;
 
-	public String getAuthcode() {
+	public int getAuthcode() {
 		return authcode;
 	}
 
-	public void setAuthcode(String authcode) {
+	public void setAuthcode(int authcode) {
 		this.authcode = authcode;
 	}
 
@@ -48,7 +48,7 @@ public class UserInfoEntity extends BaseEntity {
 	public int setUpdataFiled(PreparedStatement pst, int i) {
 		try {
 			pst.setString(i++, UserAuthorization.encrptPass(userpass));
-			pst.setString(i++, authcode);
+			pst.setInt(i++, authcode);
 			pst.setString(i++, updip);
 			pst.setString(i++, upduser);
 		} catch (SQLException e) {

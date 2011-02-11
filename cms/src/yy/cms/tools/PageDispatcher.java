@@ -13,7 +13,7 @@ public class PageDispatcher {
 	public final static String SCREENNAME_SUF = ".html";
 	public final static String SCREENNAME_PRE = "/";
 
-	public static void dispatcherByPath(String path, HttpServletRequest req, HttpServletResponse resp) {
+	public static void forwardByPath(String path, HttpServletRequest req, HttpServletResponse resp) {
 		try {
 			req.getSession().getServletContext().getRequestDispatcher(path).forward(req, resp);
 		} catch (ServletException e) {
@@ -21,18 +21,6 @@ public class PageDispatcher {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	public static void dispatcherMain(HttpServletRequest req, HttpServletResponse resp) {
-		dispatcherByPath("/Pages/main.jsp", req, resp);
-	}
-	
-	public static void dispatcherLogin(HttpServletRequest req, HttpServletResponse resp) {
-		dispatcherByPath("/Pages/login.jsp", req, resp);
-	}
-
-	public static void dispatcherError(HttpServletRequest req, HttpServletResponse resp) {
-		dispatcherByPath("/Pages/error.jsp", req, resp);
 	}
 
 	public static boolean dispatcherNext(ServletContext sc, String nextPageId, HttpServletRequest req,
@@ -51,5 +39,29 @@ public class PageDispatcher {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public static void dispatcher(HttpServletResponse resp,String url){
+		try {
+			resp.sendRedirect(url);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void dispatcherAdmin(HttpServletResponse resp) {
+		dispatcher(resp, "/Pages/admin.jsp");
+	}
+	
+	public static void dispatcherMgr(HttpServletResponse resp) {
+		dispatcher(resp, "/Pages/main.jsp");
+	}
+	
+	public static void dispatcherLogin(HttpServletResponse resp) {
+		dispatcher(resp, "/Pages/login.jsp");
+	}
+
+	public static void dispatcherError(HttpServletResponse resp) {
+		dispatcher(resp, "/Pages/error.jsp");
 	}
 }

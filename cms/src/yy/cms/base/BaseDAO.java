@@ -9,12 +9,11 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-import yy.cms.service.LoginService;
 import yy.cms.tools.Commons;
 
 public abstract class BaseDAO<T extends BaseEntity> {
 
-	private static Logger logger = Logger.getLogger(LoginService.class);
+	private static Logger logger = Logger.getLogger(BaseDAO.class);
 
 	// SQL AREA
 	private final static String SELECT = "SELECT * FROM ";
