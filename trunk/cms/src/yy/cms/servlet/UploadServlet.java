@@ -67,6 +67,6 @@ public class UploadServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		PageDispatcher.dispatcherByPath("/404.html", req, resp);
+		PageDispatcher.dispatcher404(resp);
 	}
 }

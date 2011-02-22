@@ -71,6 +71,10 @@ public abstract class BaseDAO<T extends BaseEntity> {
 
 	}
 
+	protected PreparedStatement getPreparedStatementFromSql(String sql) {
+		return con.getPreparedStatement(sql);
+	}
+	
 	protected PreparedStatement getPreparedStatementForSelect(String[] names) {
 		StringBuilder sbsql = new StringBuilder(SELECT);
 		sbsql.append(tableName);
@@ -115,7 +119,15 @@ public abstract class BaseDAO<T extends BaseEntity> {
 	protected int runExecSql() {
 		return con.execUpdSql();
 	}
+	
+	protected int runExecBatchSql() {
+		return con.execUpdSqlBatch();
+	}
 
+	protected void releaseResouce() {
+		con.release();
+	}
+	
 	protected void setTableName(Class<T> cl) {
 		this.entityClass = cl;
 		this.tableName = cl.getSimpleName().replace("Entity", "");

@@ -61,6 +61,25 @@ public class BaseDBConnection<T> {
 		return code;
 	}
 
+	public int execUpdSqlBatch() {
+		int code = -1;
+		try {
+			code = st.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return code;
+	}
+
+	public void release() {
+		try {
+			st.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		dbcm.freeCon(con);
+	}
+
 	private List<T> changeResultSetToEntity(ResultSet rs, Class<T> destClass) throws SQLException {
 		List<T> rslist = new ArrayList<T>();
 
@@ -76,7 +95,7 @@ public class BaseDBConnection<T> {
 					// get entity field
 					Field fieldObject = getFieldRecursive(destClass, fieldName);
 					fieldObject.setAccessible(true);
-					
+
 					fieldObject.set(entity, getValueFromType(rs, fieldName, columnType));
 				}
 				rslist.add(entity);
@@ -128,8 +147,9 @@ public class BaseDBConnection<T> {
 			return rs.getDate(fieldName);
 
 		case Types.INTEGER:
+		case Types.TINYINT:
+		case Types.BIGINT:
 			return rs.getInt(fieldName);
-
 		default:
 			return rs.getString(fieldName);
 		}

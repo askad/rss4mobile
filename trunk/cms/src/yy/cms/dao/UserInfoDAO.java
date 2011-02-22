@@ -29,7 +29,7 @@ public class UserInfoDAO extends BaseDAO<UserInfoEntity> {
 	public int updateUserInfo(UserInfoEntity userInfoEntity) {
 		PreparedStatement pst = getPreparedStatementForUpdata(userInfoEntity, new String[] { UserInfoEntity.USERNAME });
 
-		int i = userInfoEntity.setUpdataFiled(pst, 1);
+		int i = userInfoEntity.setUpdataField(pst, 1);
 		try {
 			pst.setString(i, userInfoEntity.getUsername());
 		} catch (SQLException e) {
@@ -40,7 +40,7 @@ public class UserInfoDAO extends BaseDAO<UserInfoEntity> {
 
 	public int insertUserInfo(UserInfoEntity userInfoEntity) {
 		PreparedStatement pst = getPreparedStatementForInsert(userInfoEntity);
-		userInfoEntity.setInsertFiled(pst);
+		userInfoEntity.setInsertField(pst);
 		return runExecSql();
 	}
 

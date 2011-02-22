@@ -12,6 +12,7 @@ public class PageDispatcher {
 
 	public final static String SCREENNAME_SUF = ".html";
 	public final static String SCREENNAME_PRE = "/";
+	private final static String HOME_PATH = "/CandidateManageSystem/";
 
 	public static void forwardByPath(String path, HttpServletRequest req, HttpServletResponse resp) {
 		try {
@@ -21,6 +22,10 @@ public class PageDispatcher {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void forwardLogin(HttpServletRequest req, HttpServletResponse resp) {
+		forwardByPath("/Pages/login.jsp", req, resp);
 	}
 
 	public static boolean dispatcherNext(ServletContext sc, String nextPageId, HttpServletRequest req,
@@ -50,18 +55,22 @@ public class PageDispatcher {
 	}
 	
 	public static void dispatcherAdmin(HttpServletResponse resp) {
-		dispatcher(resp, "/Pages/admin.jsp");
+		dispatcher(resp, HOME_PATH + "Pages/admin.jsp");
 	}
 	
 	public static void dispatcherMgr(HttpServletResponse resp) {
-		dispatcher(resp, "/Pages/main.jsp");
+		dispatcher(resp, HOME_PATH + "Pages/resume.jsp");
 	}
 	
 	public static void dispatcherLogin(HttpServletResponse resp) {
-		dispatcher(resp, "/Pages/login.jsp");
+		dispatcher(resp, HOME_PATH + "Pages/login.jsp");
 	}
 
 	public static void dispatcherError(HttpServletResponse resp) {
-		dispatcher(resp, "/Pages/error.jsp");
+		dispatcher(resp, HOME_PATH + "Pages/error.jsp");
+	}
+	
+	public static void dispatcher404(HttpServletResponse resp) {
+		dispatcher(resp, HOME_PATH + "Pages/error.jsp");
 	}
 }

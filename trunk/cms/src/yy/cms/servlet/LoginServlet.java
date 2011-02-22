@@ -51,7 +51,7 @@ public class LoginServlet extends HttpServlet {
 		} else {
 			loginPage.setErrorMsg(MessageContainer.getErrorMsg(lang, Commons.ER_B0001));
 			req.setAttribute(Commons.CURRENTPAGE, loginPage);
-			PageDispatcher.dispatcherLogin(resp);
+			PageDispatcher.forwardLogin(req, resp);
 		}
 	}
 
@@ -64,6 +64,8 @@ public class LoginServlet extends HttpServlet {
 		HttpSession session = req.getSession();
 		SessionObject so = new SessionObject();
 		so.setUsername(userInfoEntity.getUsername());
+		so.setUseerid(String.valueOf(userInfoEntity.getId()));
+		so.setUserproject(String.valueOf(userInfoEntity.getProjectcode()));
 		session.setAttribute(SessionObject.GLOBAL_SESSION, so);
 	}
 }
