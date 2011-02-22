@@ -18,13 +18,13 @@ body, input {
     padding:12px;
     text-align:left;
     z-index:1;
-    width:300px !important;
+    width:270px !important;
 }
 .loginplan_bg {
     background:#EFEFEF none repeat scroll 0 0;
     padding:0 3px 3px 0;
     text-align:left;
-    width:300px;
+    width:270px;
     z-index:2;
 }
 #container {

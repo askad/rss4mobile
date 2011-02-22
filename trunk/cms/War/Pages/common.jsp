@@ -1,5 +1,25 @@
+<%@page language="java" contentType="text/html; charset=UTF-8"%>
+<%@page import="yy.cms.tools.UserAuthorization"%>
 <%
-	String CURRENTPAGEID;
-	String NEXTPAGEID;
+	UserAuthorization.checkLogin(request, response);
 %>
-<jsp:param name="S_FILE_NM" value="<%=name%>"/>  
+<a href="<%=request.getContextPath()%>/logout">logout</a>
+<hr>
+<style type="text/css">
+body, input {
+    -x-system-font:none;
+    font-family:Verdana,Arial,Helvetica,sans-serif;
+    font-size:13px;
+    font-size-adjust:none;
+    font-stretch:normal;
+    font-style:normal;
+    font-variant:normal;
+    font-weight:normal;
+    line-height:normal;
+}
+</style>
+<script language="javascript">
+function $(id){
+	return document.getElementById(id);
+}
+</script>
