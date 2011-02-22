@@ -38,7 +38,7 @@ public class ControlServlet extends HttpServlet {
 		// session validate
 		boolean authFlag = doAuthorize(session);
 		if (!authFlag) {
-			PageDispatcher.dispatcherLogin(req, resp);
+			PageDispatcher.dispatcherLogin(resp);
 			return;
 		}
 
@@ -53,7 +53,7 @@ public class ControlServlet extends HttpServlet {
 		if (Utils.isEmpty(currentPageId)) {
 			// req.setAttribute(Commons.ERR_MSG_REQUEST,
 			// MessageContainer.getErrorMsg(req, Commons.ER_P0003));
-			PageDispatcher.dispatcherError(req, resp);
+			PageDispatcher.dispatcherError(resp);
 			return;
 		}
 
@@ -67,7 +67,7 @@ public class ControlServlet extends HttpServlet {
 		if (currentPage == null) {
 			// req.setAttribute(Commons.ERR_MSG_REQUEST,
 			// MessageContainer.getErrorMsg(req, Commons.ER_P0001));
-			PageDispatcher.dispatcherError(req, resp);
+			PageDispatcher.dispatcherError(resp);
 			return;
 		}
 
@@ -84,7 +84,7 @@ public class ControlServlet extends HttpServlet {
 			if (nextpage == null) {
 				// req.setAttribute(Commons.ERR_MSG_REQUEST,
 				// MessageContainer.getErrorMsg(req, Commons.ER_P0001));
-				PageDispatcher.dispatcherError(req, resp);
+				PageDispatcher.dispatcherError(resp);
 				return;
 			}
 		}
@@ -95,7 +95,7 @@ public class ControlServlet extends HttpServlet {
 		if (!serviceFlag) {
 			// req.setAttribute(Commons.ERR_MSG_REQUEST,
 			// MessageContainer.getErrorMsg(req, Commons.ER_P0002));
-			PageDispatcher.dispatcherError(req, resp);
+			PageDispatcher.dispatcherError(resp);
 		}
 
 		ServletContext sc = getServletConfig().getServletContext();
@@ -115,7 +115,7 @@ public class ControlServlet extends HttpServlet {
 		if (!flag) {
 			// req.setAttribute(Commons.ERR_MSG_REQUEST,
 			// MessageContainer.getErrorMsg(req, Commons.ER_P0004));
-			PageDispatcher.dispatcherError(req, resp);
+			PageDispatcher.dispatcherError(resp);
 		}
 
 	}

@@ -25,7 +25,7 @@ public class MenuDAO extends BaseDAO<MenuEntity> {
 	public int updateMenu(MenuEntity menuEntity, String name) {
 		PreparedStatement pst = getPreparedStatementForUpdata(menuEntity, new String[] { MenuEntity.MENUNAME });
 
-		int i = menuEntity.setUpdataFiled(pst, 1);
+		int i = menuEntity.setUpdataField(pst, 1);
 		try {
 			pst.setString(i, name);// TODO
 		} catch (SQLException e) {
@@ -36,7 +36,7 @@ public class MenuDAO extends BaseDAO<MenuEntity> {
 
 	public int insertUserInfo(MenuEntity menuEntity) {
 		PreparedStatement pst = getPreparedStatementForInsert(menuEntity);
-		menuEntity.setInsertFiled(pst);
+		menuEntity.setInsertField(pst);
 		return runExecSql();
 	}
 

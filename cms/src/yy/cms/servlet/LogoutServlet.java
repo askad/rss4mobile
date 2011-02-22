@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
+import yy.cms.tools.PageDispatcher;
 import yy.cms.tools.SessionObject;
 
 public class LogoutServlet extends HttpServlet {
@@ -20,10 +21,15 @@ public class LogoutServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doGet(req, resp);
+	}
+
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		HttpSession session = req.getSession();
 		SessionObject so = (SessionObject) session.getAttribute(SessionObject.GLOBAL_SESSION);
-		logger.info(so.getUsername() + ":log out");
+//		logger.info(so.getUsername() + ":log out");
 		session.setAttribute(SessionObject.GLOBAL_SESSION, null);
+		PageDispatcher.dispatcherLogin(resp);
 	}
 }

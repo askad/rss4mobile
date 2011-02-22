@@ -11,13 +11,14 @@ public class UserInfoEntity extends BaseEntity {
 	// key area
 	public static final String USERNAME = "username";
 	public static final String USERPASS = "userpass";
-	public static final String INSERTSQL = "(USERNAME,USERPASS,AUTHCODE,UPDIP,UPDUSER) VALUES (?,?,?,?,?)";
-	public static final String UPDATESQL = "SET PASS=?,AUTHCODE=?,UPDIP=?,UPDUSER=?";
+	public static final String INSERTSQL = "(USERNAME,USERPASS,AUTHCODE,UPDIP,UPDUSER,PROJECTCODE) VALUES (?,?,?,?,?,?)";
+	public static final String UPDATESQL = "SET PASS=?,AUTHCODE=?,UPDIP=?,UPDUSER=?,PROJECTCODE=?";
 	// END
 
 	private String username;
 	private String userpass;
 	private int authcode;
+	private int projectcode;
 
 	public int getAuthcode() {
 		return authcode;
@@ -43,25 +44,37 @@ public class UserInfoEntity extends BaseEntity {
 		this.userpass = userpass;
 	}
 
-	//for updata
-	
-	public int setUpdataFiled(PreparedStatement pst, int i) {
+	public int getProjectcode() {
+		return projectcode;
+	}
+
+	public void setProjectcode(int projectcode) {
+		this.projectcode = projectcode;
+	}
+
+	// for updata
+	public int setUpdataField(PreparedStatement pst, int i) {
 		try {
 			pst.setString(i++, UserAuthorization.encrptPass(userpass));
 			pst.setInt(i++, authcode);
 			pst.setString(i++, updip);
 			pst.setString(i++, upduser);
+			pst.setInt(i++, projectcode);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return i;
 	}
 
+	public int setUpdataField(PreparedStatement pst) {
+		return -1;
+	}
+	
 	//for insert
-	public void setInsertFiled(PreparedStatement pst) {
+	public void setInsertField(PreparedStatement pst) {
 		try {
 			pst.setString(1, username);
-			setUpdataFiled(pst, 2);
+			setUpdataField(pst, 2);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -42,7 +42,7 @@ public class MenuEntity extends BaseEntity {
 	}
 
 	// for updata
-	public int setUpdataFiled(PreparedStatement pst, int i) {
+	public int setUpdataField(PreparedStatement pst, int i) {
 		try {
 			pst.setString(i++, menuname);
 			pst.setString(i++, menulink);
@@ -56,8 +56,8 @@ public class MenuEntity extends BaseEntity {
 	}
 
 	// for insert
-	public void setInsertFiled(PreparedStatement pst) {
-		setUpdataFiled(pst, 1);
+	public void setInsertField(PreparedStatement pst) {
+		setUpdataField(pst, 1);
 	}
 
 	public String getInsertSql() {

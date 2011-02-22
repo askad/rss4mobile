@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.Timestamp;
 
 abstract public class BaseEntity {
+	
+	public static final String ID = "id";
 	private int id;
 	public String upduser;
 	public Timestamp updtime;
@@ -36,6 +38,6 @@ abstract public class BaseEntity {
 	}
 	abstract public String getInsertSql();
 	abstract public String getUpdataString();
-	abstract public int setUpdataFiled(PreparedStatement pst, int i);
-	abstract public void setInsertFiled(PreparedStatement pst);
+	abstract public int setUpdataField(PreparedStatement pst);
+	abstract public void setInsertField(PreparedStatement pst);
 }
