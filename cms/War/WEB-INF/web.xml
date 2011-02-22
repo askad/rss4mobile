@@ -21,6 +21,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
 	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>yy.cms.servlet.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/logout</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>ControlServlet</servlet-name>
 		<servlet-class>yy.cms.servlet.ControlServlet</servlet-class>
 	</servlet>
@@ -35,6 +43,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
      <servlet-mapping>    
          <servlet-name>FileUploaded</servlet-name>    
          <url-pattern>/FileUploaded</url-pattern>    
+     </servlet-mapping> 
+	<servlet>    
+         <servlet-name>UpdatePerson</servlet-name>    
+         <servlet-class>yy.cms.servlet.UpdatePersonServlet</servlet-class>    
+     </servlet>    
+     <servlet-mapping>    
+         <servlet-name>UpdatePerson</servlet-name>    
+         <url-pattern>/UpdatePerson</url-pattern>    
      </servlet-mapping> 
 	<error-page>
 		<error-code>500</error-code>
