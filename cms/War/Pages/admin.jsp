@@ -74,77 +74,77 @@ Recommended Position:
 		String viewresultStr = CodeContainer.getCodeDesc(CodeContainer.CODE_VIEWRESULT, viewresult);
 		
 		int resumeid = detailVO.getId();
-		
+		int pid = detailVO.getPid();
   %>
  <tr id="trR<%=resumeid%>" align="center">
  <td><input type="button" name="Submit" value="delete" id="del<%=resumeid%>"onclick="del(<%=resumeid%>);"/>
  <input type="button" name="edit" value="edit"  id="edit<%=resumeid%>" onclick="edit(<%=resumeid%>);"/>
  <input type="button" name="undo" value="undo"  id="undo<%=resumeid%>" disabled="disabled"/></td>
- <td><%=detailVO.getChnname()%></td>
- <td><%=detailVO.getPhonenum()%></td>
- <td><%=workexprStr%></td>
- <td><%=detailVO.getUniversity()%></td>
- <td><%=degreeStr%></td>
- <td><%=detailVO.getWorkingcom()%></td>
- <td><%=detailVO.getLang()%></td>
- <td><%=langskillStr%></td>
- <td><%=sdskillStr%></td>
- <td><%=techskillStr%></td>
- <td><%=stabilityStr%></td>
- <td><%=viewresultStr%></td>
+ <td id="tdR<%=resumeid%>Chnname"><%=detailVO.getChnname()%></td>
+ <td id="tdR<%=resumeid%>Phonenum"><%=detailVO.getPhonenum()%></td>
+ <td id="tdR<%=resumeid%>Workexpr"><%=workexprStr%></td>
+ <td id="tdR<%=resumeid%>University"><%=detailVO.getUniversity()%></td>
+ <td id="tdR<%=resumeid%>Degree"><%=degreeStr%></td>
+ <td id="tdR<%=resumeid%>Workingcom"><%=detailVO.getWorkingcom()%></td>
+ <td id="tdR<%=resumeid%>Lang"><%=detailVO.getLang()%></td>
+ <td id="tdR<%=resumeid%>Langskill"><%=langskillStr%></td>
+ <td id="tdR<%=resumeid%>Sdskill"><%=sdskillStr%></td>
+ <td id="tdR<%=resumeid%>Techskill"><%=techskillStr%></td>
+ <td id="tdR<%=resumeid%>Stability"><%=stabilityStr%></td>
+ <td id="tdR<%=resumeid%>Viewresult"><%=viewresultStr%></td>
   </tr>
    <tr style="display:none" id="trE<%=resumeid%>" align="center">
  <td><input type="button" name="" value="delete" disabled="disabled"/>
- <input type="button" name="" value="save" onclick="save(<%=resumeid%>);"/>
+ <input type="button" name="" value="save" onclick="save(<%=resumeid%>,<%=pid%>);"/>
  <input type="button" name="" value="undo" onclick="undo(<%=resumeid%>);"/></td>
- <td><%=detailVO.getChnname()%></td>
- <td><input name="phonenum" value="<%=detailVO.getPhonenum()%>"/></td>
- <td><select style="width:100%"name="workexpr" id="workexpr<%=workexpr%>">
+ <td><input id="<%=resumeid%>chnname" name="phonenum" value="<%=detailVO.getChnname()%>"/></td>
+ <td><input id="<%=resumeid%>phonenum" name="phonenum" value="<%=detailVO.getPhonenum()%>"/></td>
+ <td><select style="width:100%"name="workexpr" id="<%=resumeid%>workexpr">
    <option value="1"><%=workexprdesc01%></option>
    <option value="2"><%=workexprdesc02%></option>
    <option value="3"><%=workexprdesc03%></option>
    <option value="4"><%=workexprdesc04%></option>
    <option value="5"><%=workexprdesc05%></option>
  </select></td>
- <td><input name="university" value="<%=detailVO.getUniversity()%>"/></td>
- <td><select style="width:100%"name="degree" id="degree<%=degree%>">
+ <td><input id="<%=resumeid%>university" name="university" value="<%=detailVO.getUniversity()%>"/></td>
+ <td><select style="width:100%"name="degree" id="<%=resumeid%>degree">
    <option value="1"><%=degreedesc01%></option>
    <option value="2"><%=degreedesc02%></option>
    <option value="3"><%=degreedesc03%></option>
    <option value="4"><%=degreedesc04%></option>
    <option value="5"><%=degreedesc05%></option>
  </select></td>
- <td><input name="workingcom" value="<%=detailVO.getWorkingcom()%>"/></td>
- <td><input name="lang" value="<%=detailVO.getLang()%>"/></td>
- <td><select style="width:100%"name="langskill" id="langskill<%=langskill%>">
+ <td><input id="<%=resumeid%>workingcom" name="workingcom" value="<%=detailVO.getWorkingcom()%>"/></td>
+ <td><input id="<%=resumeid%>lang" name="lang" value="<%=detailVO.getLang()%>"/></td>
+ <td><select style="width:100%"name="langskill" id="<%=resumeid%>langskill">
    <option value="1"><%=techdesc01%></option>
    <option value="2"><%=techdesc02%></option>
    <option value="3"><%=techdesc03%></option>
    <option value="4"><%=techdesc04%></option>
    <option value="5"><%=techdesc05%></option>
  </select></td>
- <td><select style="width:100%"name="sdskill" id="sdskill<%=sdskill%>">
+ <td><select style="width:100%"name="sdskill" id="<%=resumeid%>sdskill">
    <option value="1"><%=techdesc01%></option>
    <option value="2"><%=techdesc02%></option>
    <option value="3"><%=techdesc03%></option>
    <option value="4"><%=techdesc04%></option>
    <option value="5"><%=techdesc05%></option>
  </select></td>
- <td><select style="width:100%"name="techskill" id="techskill<%=techskill%>">
+ <td><select style="width:100%"name="techskill" id="<%=resumeid%>techskill">
    <option value="1"><%=techdesc01%></option>
    <option value="2"><%=techdesc02%></option>
    <option value="3"><%=techdesc03%></option>
    <option value="4"><%=techdesc04%></option>
    <option value="5"><%=techdesc05%></option>
  </select></td>
- <td><select style="width:100%"name="stability" id="stability<%=stability%>">
+ <td><select style="width:100%"name="stability" id="<%=resumeid%>stability">
    <option value="1"><%=techdesc01%></option>
    <option value="2"><%=techdesc02%></option>
    <option value="3"><%=techdesc03%></option>
    <option value="4"><%=techdesc04%></option>
    <option value="5"><%=techdesc05%></option>
  </select></td>
- <td><select style="width:100%"name="viewresult" id="viewresult<%=viewresult%>">
+ <td><select style="width:100%"name="viewresult" id="<%=resumeid%>viewresult">
  <option value="1"><%=viewresult01%></option>
 <option value="2"><%=viewresult02%></option>
 <option value="3"><%=viewresult03%></option>
@@ -156,33 +156,74 @@ Recommended Position:
  </select></td>
   </tr>
   <script language="javascript">
-$("degree<%=degree%>").options[<%=degree-1%>].selected = true;
-$("workexpr<%=workexpr%>").options[<%=workexpr-1%>].selected = true;
-$("stability<%=stability%>").options[<%=stability-1%>].selected = true;
-$("sdskill<%=sdskill%>").options[<%=sdskill-1%>].selected = true;
-$("techskill<%=techskill%>").options[<%=techskill-1%>].selected = true;
-$("viewresult<%=viewresult%>").options[<%=viewresult-1%>].selected = true;
-$("langskill<%=langskill%>").options[<%=langskill-1%>].selected = true;
+yid("<%=resumeid%>degree").options[<%=degree-1%>].selected = true;
+yid("<%=resumeid%>workexpr").options[<%=workexpr-1%>].selected = true;
+yid("<%=resumeid%>stability").options[<%=stability-1%>].selected = true;
+yid("<%=resumeid%>sdskill").options[<%=sdskill-1%>].selected = true;
+yid("<%=resumeid%>techskill").options[<%=techskill-1%>].selected = true;
+yid("<%=resumeid%>viewresult").options[<%=viewresult-1%>].selected = true;
+yid("<%=resumeid%>langskill").options[<%=langskill-1%>].selected = true;
 </script>
   <%}%>
 </table>
 <script language="javascript">
 function edit(resumeid){
-	$("trE" + resumeid).style.display = "";
-	$("trR" + resumeid).style.display = "none";
+	yid("trE" + resumeid).style.display = "";
+	yid("trR" + resumeid).style.display = "none";
 }
 function undo(resumeid){
-	$("trE" + resumeid).style.display = "none";
-	$("trR" + resumeid).style.display = "";
+	yid("trE" + resumeid).style.display = "none";
+	yid("trR" + resumeid).style.display = "";
 }
-function save(resumeid){
+function save(resumeid, pid){
+$.post('<%=request.getContextPath()%>/UpdatePerson', 
+		{
+			type: "admin",
+			rid: resumeid,
+			chnname: $("#" + resumeid + "chnname").val(),
+			//engname: $(resumeid + "chnname"),
+			phonenum: $("#" + resumeid + "phonenum").val(),
+			workexpr: $("#" + resumeid + "workexpr").val(),
+			university: $("#" + resumeid + "university").val(),
+			degree: $("#" + resumeid + "degree").val(),
+			workingcom: $("#" + resumeid + "workingcom").val(),
+			langskill: $("#" + resumeid + "langskill").val(),
+			techskill: $("#" + resumeid + "techskill").val(),
+			sdskill: $("#" + resumeid + "sdskill").val(),
+			stability: $("#" + resumeid + "stability").val(),
+			//workhistory: $(resumeid + "workhistory"),
+			//comments: $(resumeid + "comments"),
+			lang: $("#" + resumeid + "lang").val(),
+			viewresult: $("#" + resumeid + "viewresult").val()
+		},
+		function(data) {
+			undo(resumeid);
+			resetValueE(resumeid);
+		},
+		"text");
+}
+function del(resumeid, pid){
 
 }
-function del(resumeid){
-
+function resetValueE(resumeid){
+	$("#tdR" + resumeid + "Chnname").html($("#" + resumeid + "chnname").val());
+	$("#tdR" + resumeid + "Phonenum").html($("#" + resumeid + "phonenum").val());
+	$("#tdR" + resumeid + "University").html($("#" + resumeid + "university").val());
+	$("#tdR" + resumeid + "Workingcom").html($("#" + resumeid + "workingcom").val());
+	$("#tdR" + resumeid + "Lang").html($("#" + resumeid + "lang").val());
+	
+	$("#tdR" + resumeid + "Workexpr").html(getSelectText(resumeid, "workexpr"));
+	$("#tdR" + resumeid + "Degree").html(getSelectText(resumeid, "degree"));
+	$("#tdR" + resumeid + "Langskill").html(getSelectText(resumeid, "langskill"));
+	$("#tdR" + resumeid + "Sdskill").html(getSelectText(resumeid, "sdskill"));
+	$("#tdR" + resumeid + "Techskill").html(getSelectText(resumeid, "techskill"));
+	$("#tdR" + resumeid + "Stability").html(getSelectText(resumeid, "stability"));
+	$("#tdR" + resumeid + "Viewresult").html(getSelectText(resumeid, "viewresult"));
 }
-function resetValue(resumeid){
-
+function getSelectText(resumeid, idstr){
+	var obj = yid(resumeid + idstr);
+	var index = obj.selectedIndex;
+	return obj.options[index].text;
 }
 </script>
 </body>
