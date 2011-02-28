@@ -89,7 +89,7 @@ public class BaseDBConnection<T> {
 				int columnCount = metaData.getColumnCount();
 				T entity = destClass.newInstance();
 				for (int i = 0; i < columnCount; i++) {
-					String fieldName = metaData.getColumnName(i + 1).toLowerCase();
+					String fieldName = metaData.getColumnLabel(i + 1).toLowerCase();
 					int columnType = metaData.getColumnType(i + 1);
 
 					// get entity field

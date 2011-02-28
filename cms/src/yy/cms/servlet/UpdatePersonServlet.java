@@ -1,7 +1,6 @@
 package yy.cms.servlet;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -12,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import yy.cms.dao.CommonDAO;
+import yy.cms.entity.PersonInfoEntity;
 import yy.cms.tools.PageDispatcher;
 import yy.cms.tools.SessionObject;
+import yy.cms.tools.Utils;
 
 public class UpdatePersonServlet extends HttpServlet {
 
@@ -26,6 +27,44 @@ public class UpdatePersonServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		String type = req.getParameter("type");
+		if ("admin".equals(type)) {
+			updateByAdmin(req, resp);
+		} else {
+			updateByMgr(req, resp);
+		}
+
+	}
+
+	private void updateByAdmin(HttpServletRequest req, HttpServletResponse resp) {
+		
+		
+		PersonInfoEntity pie = new PersonInfoEntity();
+		Utils.setObjectFromRequest(req,pie);
+		
+//		pie.setComments("");
+//		pie.setChnname(req.getParameter("chnname"));
+//		pie.setDegree(req.getParameter("chnname"));
+//		pie.setEngname(req.getParameter("chnname"));
+//		pie.setId(1);
+//		pie.setLang("");
+//		pie.setLangskill(1);
+//		pie.setPhonenum(1);
+//		pie.setSdskill(1);
+//		pie.setStability(1);
+//		pie.setTechskill(1);
+//		pie.setUniversity("");
+//		pie.setWorkexpr(1);
+//		pie.setWorkhistory("");
+//		pie.setWorkingcom("");	
+		try {
+			resp.getWriter().write(new String(pie.getChnname().getBytes(),"UTF-8"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void updateByMgr(HttpServletRequest req, HttpServletResponse resp) {
 		HttpSession session = req.getSession();
 		SessionObject so = (SessionObject) session.getAttribute(SessionObject.GLOBAL_SESSION);
 		String viewerName = so.getUsername();
@@ -66,11 +105,10 @@ public class UpdatePersonServlet extends HttpServlet {
 		commonDaoPerson.releaseSql();
 		commonDaoResume.releaseSql();
 		PageDispatcher.forwardByPath("/Pages/updateSuccess.jsp", req, resp);
-
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		PageDispatcher.dispatcher(resp, "/404.html");
+		PageDispatcher.dispatcher(resp, "Pages/404.html");
 	}
 }
