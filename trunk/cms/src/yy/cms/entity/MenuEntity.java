@@ -67,4 +67,10 @@ public class MenuEntity extends BaseEntity {
 	public String getUpdataString() {
 		return UPDATESQL;
 	}
+
+	@Override
+	public int setUpdataField(PreparedStatement pst) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

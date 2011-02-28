@@ -2,6 +2,7 @@ package yy.cms.vo;
 
 public class ResumeDetailVO {
 	 private int id;
+	 private int pid;
 	 private String jobname;
 	 private String chnname;
 	 private String engname;
@@ -105,6 +106,12 @@ public class ResumeDetailVO {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public int getPid() {
+		return pid;
+	}
+	public void setPid(int pid) {
+		this.pid = pid;
 	}
 	
 }

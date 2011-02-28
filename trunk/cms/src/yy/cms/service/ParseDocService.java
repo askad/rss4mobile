@@ -14,11 +14,13 @@ public class ParseDocService {
 	private String decoding;
 
 	public static void main(String[] args) {
-		String pathI = "C:/Documents and Settings/yyang21/Desktop/cms/03 [朱博文]简历_智联招聘.html";
-		parse(pathI);
+		ParseDocService p =new ParseDocService();
+		p.iPath = "C:/Documents and Settings/yyang21/Desktop/cms/03 [朱博文]简历_智联招聘.html";
+		p.decoding = "UTF-8";
+		p.parse();
 	}
 
-	private void parse(String path) {
+	private void parse() {
 		Parser myParser;
 		try {
 			myParser = new Parser(iPath);
