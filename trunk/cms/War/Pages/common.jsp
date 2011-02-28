@@ -19,7 +19,8 @@ body, input {
 }
 </style>
 <script language="javascript">
-function $(id){
+function yid(id){
 	return document.getElementById(id);
 }
 </script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/jquery-1.5.js"></script>
