@@ -20,7 +20,7 @@ public abstract class BaseDAO<T extends BaseEntity> {
 	private final static String WHERE = " WHERE 1=1 ";
 
 	private final static String AND = " AND ";
-	private final static String UPDATA = "UPDATA ";
+	private final static String UPDATE = "UPDATE ";
 
 	private final static String INSERT = "INSERT INTO ";
 	private final static String PLACEHOLDER = " = ? ";
@@ -88,7 +88,7 @@ public abstract class BaseDAO<T extends BaseEntity> {
 	}
 
 	protected PreparedStatement getPreparedStatementForUpdata(BaseEntity entity, String[] names) {
-		StringBuilder sbsql = new StringBuilder(UPDATA);
+		StringBuilder sbsql = new StringBuilder(UPDATE);
 		sbsql.append(tableName);
 		sbsql.append(entity.getUpdataString());
 		sbsql.append(getConditationSql(names));

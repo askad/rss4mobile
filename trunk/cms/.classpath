@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/yyang/soft/develop/tomcat6029/lib/jasper-el.jar"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" output="work" path="work"/>
-	<classpathentry kind="var" path="TOMCAT_HOME"/>
-	<classpathentry kind="lib" path="D:/develop/webserver/Tomcat 5.5/common/lib/servlet-api.jar"/>
-	<classpathentry kind="lib" path="D:/develop/webserver/Tomcat 5.5/common/lib/jasper-compiler.jar"/>
-	<classpathentry kind="lib" path="D:/develop/webserver/Tomcat 5.5/common/lib/jasper-runtime.jar"/>
-	<classpathentry kind="lib" path="D:/develop/webserver/Tomcat 5.5/common/lib/jsp-api.jar"/>
 	<classpathentry kind="lib" path="War/WEB-INF/lib/commons-fileupload-1.2.2.jar"/>
 	<classpathentry kind="lib" path="War/WEB-INF/lib/commons-io-2.0.jar"/>
 	<classpathentry kind="lib" path="War/WEB-INF/lib/commons-logging.jar"/>
 	<classpathentry kind="lib" path="War/WEB-INF/lib/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="War/WEB-INF/lib/htmllexer.jar"/>
 	<classpathentry kind="lib" path="War/WEB-INF/lib/mysql-connector-java-5.1.14-bin.jar"/>
+	<classpathentry kind="lib" path="C:/yyang/soft/develop/tomcat6029/lib/jasper.jar"/>
+	<classpathentry kind="lib" path="C:/yyang/soft/develop/tomcat6029/lib/jasper-jdt.jar"/>
+	<classpathentry kind="lib" path="C:/yyang/soft/develop/tomcat6029/lib/jsp-api.jar"/>
+	<classpathentry kind="lib" path="C:/yyang/soft/develop/tomcat6029/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="War/WEB-INF/lib/htmlparser.jar"/>
+	<classpathentry kind="lib" path="War/WEB-INF/lib/filterbuilder.jar"/>
+	<classpathentry kind="lib" path="War/WEB-INF/lib/sitecapturer.jar"/>
+	<classpathentry kind="lib" path="War/WEB-INF/lib/thumbelina.jar"/>
 	<classpathentry kind="output" path="War/WEB-INF/classes"/>
 </classpath>
