@@ -22,7 +22,7 @@ import yy.cms.tools.Utils;
 public class UpdatePersonServlet extends BaseHttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private final Logger logger = Logger.getLogger(LogoutServlet.class);
 
 	private final String SQL_UPDATE_PERSON_MGR = "UPDATE PERSONINFO P,RESUMEINFO R SET P.LANGSKILL=?, P.SDSKILL=?, P.TECHSKILL=?, P.STABILITY=? "
@@ -31,14 +31,14 @@ public class UpdatePersonServlet extends BaseHttpServlet {
 	private final String SQL_UPDATE_RESUME_MGR = "UPDATE RESUMEINFO R SET VIEWRESULT=?,VIEWDATE=?,VIEWER=? "
 			+ "WHERE R.ID = ? ";
 
-	private final String SQL_DELETE_RESUME = "DELETE RESUMEINFO R WHERE R.ID = ? ";
+	private final String SQL_DELETE_RESUME = "DELETE FROM RESUMEINFO WHERE ID = ? ";
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String msg = null;
 		authorizeUser(req, resp);
-		
+
 		String type = req.getParameter("type");
 		if ("adminU".equals(type)) {
 			msg = updateByAdmin(req, resp);
@@ -74,7 +74,7 @@ public class UpdatePersonServlet extends BaseHttpServlet {
 		}
 
 		commonDaoResume.updateBatchSql();
-		return "Success";
+		return "Delete Successful";
 	}
 
 	private String updateByAdmin(HttpServletRequest req, HttpServletResponse resp) {
@@ -99,29 +99,15 @@ public class UpdatePersonServlet extends BaseHttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		commonDaoResume.updateBatchSql();
 
 		// update PersonInfo
 		PersonInfoEntity personInfoEntity = new PersonInfoEntity();
 		Utils.setObjectFromRequest(req, personInfoEntity);
 		personInfoEntity.setId(Integer.parseInt(pid));
 		PersonInfoDAO pidao = new PersonInfoDAO();
-		pidao.updatePersonInfo(personInfoEntity);
-		return "Success";
-		// pie.setChnname(req.getParameter("chnname"));
-		// pie.setDegree(req.getParameter("chnname"));
-		// pie.setEngname(req.getParameter("chnname"));
-		// pie.setId(1);
-		// pie.setLang("");
-		// pie.setLangskill(1);
-		// pie.setPhonenum(1);
-		// pie.setSdskill(1);
-		// pie.setStability(1);
-		// pie.setTechskill(1);
-		// pie.setUniversity("");
-		// pie.setWorkexpr(1);
-		// pie.setWorkhistory("");
-		// pie.setWorkingcom("");
-
+		int result = pidao.updatePersonInfo(personInfoEntity);
+		return result==1?"Update Successful":"Update Failed,Please Try again, Or connect your Admin.";
 	}
 
 	private void updateByMgr(HttpServletRequest req, HttpServletResponse resp) {
@@ -172,3 +158,17 @@ public class UpdatePersonServlet extends BaseHttpServlet {
 		PageDispatcher.dispatcher(resp, "Pages/404.html");
 	}
 }
+// pie.setChnname(req.getParameter("chnname"));
+// pie.setDegree(req.getParameter("chnname"));
+// pie.setEngname(req.getParameter("chnname"));
+// pie.setId(1);
+// pie.setLang("");
+// pie.setLangskill(1);
+// pie.setPhonenum(1);
+// pie.setSdskill(1);
+// pie.setStability(1);
+// pie.setTechskill(1);
+// pie.setUniversity("");
+// pie.setWorkexpr(1);
+// pie.setWorkhistory("");
+// pie.setWorkingcom("");

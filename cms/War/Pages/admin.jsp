@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>Resume Detail</title>
+<title>Person Detail</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <body>
 <%
@@ -39,7 +39,8 @@
 %>
 
 Recommended Position:
-<input type="button" name="import" value="import" />
+<input type="button" name="import" value="import" /><br />
+<a href="admin_allpeople.jsp">Reassignment</a>
 <table border="1" cellspacing="0" cellpadding="0" width="100%">
   <tr align="center" valign="middle">
   <td>&nbsp;</td>
@@ -50,7 +51,7 @@ Recommended Position:
  <td>Degree</td>
  <td>Working Company</td>
  <td>Language</td>
- <td>Language Skill </td>
+ <td>Language Skill</td>
  <td>SD IT Tech</td>
  <td>Developer Tech</td>
  <td>Stability</td>
@@ -155,6 +156,14 @@ Recommended Position:
 <option value="8"><%=viewresult08%></option>
  </select></td>
   </tr>
+  <input type="hidden" id="<%=resumeid%>degreeValue" value="<%=degree-1%>"/>
+  <input type="hidden" id="<%=resumeid%>workexprValue" value="<%=workexpr-1%>"/>
+  <input type="hidden" id="<%=resumeid%>stabilityValue" value="<%=stability-1%>"/>
+  <input type="hidden" id="<%=resumeid%>sdskillValue" value="<%=sdskill-1%>"/>
+  <input type="hidden" id="<%=resumeid%>techskillValue" value="<%=techskill-1%>"/>
+  <input type="hidden" id="<%=resumeid%>viewresultValue" value="<%=viewresult-1%>"/>
+  <input type="hidden" id="<%=resumeid%>langskillValue" value="<%=langskill-1%>"/>
+  
   <script language="javascript">
 yid("<%=resumeid%>degree").options[<%=degree-1%>].selected = true;
 yid("<%=resumeid%>workexpr").options[<%=workexpr-1%>].selected = true;
@@ -167,64 +176,8 @@ yid("<%=resumeid%>langskill").options[<%=langskill-1%>].selected = true;
   <%}%>
 </table>
 <script language="javascript">
-function edit(resumeid){
-	yid("trE" + resumeid).style.display = "";
-	yid("trR" + resumeid).style.display = "none";
-}
-function undo(resumeid){
-	yid("trE" + resumeid).style.display = "none";
-	yid("trR" + resumeid).style.display = "";
-}
-function save(resumeid, pid){
-$.post('<%=request.getContextPath()%>/UpdatePerson', 
-		{
-			type: "admin",
-			rid: resumeid,
-			chnname: $("#" + resumeid + "chnname").val(),
-			//engname: $(resumeid + "chnname"),
-			phonenum: $("#" + resumeid + "phonenum").val(),
-			workexpr: $("#" + resumeid + "workexpr").val(),
-			university: $("#" + resumeid + "university").val(),
-			degree: $("#" + resumeid + "degree").val(),
-			workingcom: $("#" + resumeid + "workingcom").val(),
-			langskill: $("#" + resumeid + "langskill").val(),
-			techskill: $("#" + resumeid + "techskill").val(),
-			sdskill: $("#" + resumeid + "sdskill").val(),
-			stability: $("#" + resumeid + "stability").val(),
-			//workhistory: $(resumeid + "workhistory"),
-			//comments: $(resumeid + "comments"),
-			lang: $("#" + resumeid + "lang").val(),
-			viewresult: $("#" + resumeid + "viewresult").val()
-		},
-		function(data) {
-			undo(resumeid);
-			resetValueE(resumeid);
-		},
-		"text");
-}
-function del(resumeid, pid){
-
-}
-function resetValueE(resumeid){
-	$("#tdR" + resumeid + "Chnname").html($("#" + resumeid + "chnname").val());
-	$("#tdR" + resumeid + "Phonenum").html($("#" + resumeid + "phonenum").val());
-	$("#tdR" + resumeid + "University").html($("#" + resumeid + "university").val());
-	$("#tdR" + resumeid + "Workingcom").html($("#" + resumeid + "workingcom").val());
-	$("#tdR" + resumeid + "Lang").html($("#" + resumeid + "lang").val());
-	
-	$("#tdR" + resumeid + "Workexpr").html(getSelectText(resumeid, "workexpr"));
-	$("#tdR" + resumeid + "Degree").html(getSelectText(resumeid, "degree"));
-	$("#tdR" + resumeid + "Langskill").html(getSelectText(resumeid, "langskill"));
-	$("#tdR" + resumeid + "Sdskill").html(getSelectText(resumeid, "sdskill"));
-	$("#tdR" + resumeid + "Techskill").html(getSelectText(resumeid, "techskill"));
-	$("#tdR" + resumeid + "Stability").html(getSelectText(resumeid, "stability"));
-	$("#tdR" + resumeid + "Viewresult").html(getSelectText(resumeid, "viewresult"));
-}
-function getSelectText(resumeid, idstr){
-	var obj = yid(resumeid + idstr);
-	var index = obj.selectedIndex;
-	return obj.options[index].text;
-}
+var contextPath = "<%=request.getContextPath()%>";
 </script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/admin.js"></script>
 </body>
 </head>
