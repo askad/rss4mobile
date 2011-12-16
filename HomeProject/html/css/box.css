@@ -1,0 +1,13 @@
+body {
+	font-family:arial;
+	background-color:#fff;
+	color:#000;
+}
+#msg {
+	color: red;
+}
+#inputText {
+	width:550px;
+	height:550px;
+	overflow: hidden;
+}
