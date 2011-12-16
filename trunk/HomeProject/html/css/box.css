@@ -1,5 +1,7 @@
 body {
 	font-family:arial;
+	font-family:arial;
+	font
 	background-color:#fff;
 	color:#000;
 }
@@ -10,4 +12,14 @@ body {
 	width:550px;
 	height:550px;
 	overflow: hidden;
+	font-size: 18px;
+}
+#textCon{
+	
+}
+#lnum {
+	position: absolute;
+	float:left;
+	left:320px;
+	font-size: 18px;
 }
