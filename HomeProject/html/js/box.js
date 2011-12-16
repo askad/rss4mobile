@@ -7,14 +7,18 @@ var CBOX = new Box(10,10,10);
 var allBox = {};
 
 function arrangeBox(){
+	alert();
 	var boxList = parseInput($("#inputText").text());
-	$("#result").text("Yes");
+	sort(boxList);
+	$("#result").text(sizeCheck(boxList));
 }
 function parseInput(text){
+	
 }
 
 function sort(boxList){
 }
 
-function sizeCheck(){
+function sizeCheck(boxList){
+	return "Yes";
 }
