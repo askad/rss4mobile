@@ -8,6 +8,7 @@ function Box(l,w,h,n){
 	this.name = n;
 	this.toString = function(){return "L:" + this.l + ", W:" + this.w + ", H:" + this.h + "<br/>"};
 	this.area = this.l * this.w;
+	this.flag = "-";
 }
 var CBOX = new Box(10,10,1000);
 var boxV = CBOX.l*CBOX.w*CBOX.h;
@@ -69,8 +70,9 @@ function sizeCheck(boxList){
 	var structAll = new Array();
 	var floor = 0;
 	var restL = CBOX.l;
-	var restW = CBOX.w;
+	var restW = CBOX.w - boxList[0].w;
 	var restH = CBOX.h;
+	var flag = "-";//- or |
 	structAll[floor] = new Array();
 	for(var i=0;i<len;i++){
 		var count = 0;
@@ -85,13 +87,33 @@ function sizeCheck(boxList){
 		if(!checkHeight()){
 			return "No more space for Box:" + boxList[i].name;
 		}
+		
 		if(restH < boxList[i].h){
 			return 
-		} && 
-			((restL > boxList[i].l && restW > boxList[i].w) ||
+		}
+		
+		if(restL >= boxList[i].l && restW > boxList[i].w){
+			restL -= boxList[i].l;
+			//restW -= boxList[i].w;
+			boxList[i].flag = flag;
+			structAll[floor][count] = boxList[i];
+			restArea -= boxList[i].area;
+		} else if(restL < boxList[i].l){
+			if(restL < restW){
+				var temp = restL;
+				restL = restW;
+				restW = temp;
+				flag = "|";
+			}else{
+			
+			}
+		}
+		
+		
+			(() ||
 			(restL > boxList[i].l && restW > boxList[i].w) ||
-		structAll[floor][count] = boxList[i];
-		restArea -= boxList[i].area;
+		
+
 		
 	}
 	return "Fit";
